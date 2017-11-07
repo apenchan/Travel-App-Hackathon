@@ -8,7 +8,7 @@ class EventBox extends Component {
                     <div className="card">
                         <img className="card-img-top" src="..." alt="Card image cap"/>
                         <div className="card-body">
-                            <h4 className="card-title"> {this.props.X}</h4>
+                            <h4 className="card-title"> {this.props.name}</h4>
                             <p className="card-text">Some quick example text.</p>
                             <a href="#" className="btn btn-primary">Button</a>
                             

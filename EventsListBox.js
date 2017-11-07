@@ -4,7 +4,7 @@ import EventBox from './EventBox';
 class EventsListBox extends React.Component {
 
     mapTheEvents() {
-        return this.props.PROPSNAME.map(function (event, index) {
+        return this.props.event.map(function (event, index) {
                 return <EventBox key={index} {...event}>
                     {event.name}</EventBox>
             })
