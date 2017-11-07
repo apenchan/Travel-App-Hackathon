@@ -8,10 +8,17 @@ class Homepage extends React.Component {
     this.state = { events: [] };
     this.createEvent = this.createEvent.bind(this);
   }
-  createEvent(event) {
+  createEvent(title) {
+    var event = {
+      title : title,
+    }
     this.setState({ events: this.state.events.concat(event) })
-    console.log(this.state.events)
+    console.log(this.state)
   }
+
+
+
+
   render() {
     return (
       <div className="main-container">

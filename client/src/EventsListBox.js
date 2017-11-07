@@ -1,14 +1,12 @@
 
-import React from 'react';
-import Homepage from './Homepage';
+import React from 'react';import Homepage from './Homepage';
 import EventBox from './EventBox';
 
 class EventsListBox extends React.Component {
 
     mapTheEvents() {
         return this.props.event.map(function (event, index) {
-                return <EventBox key={index} {...event}>
-                    {event.name}</EventBox>
+                return <EventBox key={index} {...event}></EventBox>
             })
     }
 
