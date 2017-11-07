@@ -1,6 +1,7 @@
 const express = require('express');
 var path = require('path');
-var events = require('./models');
+var events = require('./models').Events
+var users = require('./models').Users
 var mongoose = require('mongoose')
 var bodyParser = require('body-parser')
 const app = express();
@@ -14,6 +15,10 @@ app.use(express.static('./client/dist/'));
 app.get('./test',(req,res) => {
   console.log('works')
   res.send('works')
+})
+
+app.post('./search',(req,res) => {
+
 })
 
 app.get('/*', (req, res) => {
