@@ -1,25 +1,37 @@
 const express = require('express');
 var path = require('path');
-var events = require('./models').Events
-var users = require('./models').Users
+var events = require('./client/src/models.js').Events
+var users = require('./client/src/models.js').Users
 var mongoose = require('mongoose')
 var bodyParser = require('body-parser')
 const app = express();
 var db = mongoose.connect('mongodb://localhost/travelDB');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 
-app.get('./test',(req,res) => {
-  console.log('works')
-  res.send('works')
+// app.get('./test',(req,res) => {
+//   console.log('works')
+//   res.send('works')
+// })
+
+// app.post('./search',(req,res) => {
+
+// })
+
+
+app.post('/event', function (req, res, next) {
+  Events.create(req.body, function (err, savedEvent) {
+    if (err) { res.send(err) }
+    res.send(savedEvent);
+    console.log('the event was saved')
+  })
 })
 
-app.post('./search',(req,res) => {
 
-})
+
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
