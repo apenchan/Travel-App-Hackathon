@@ -1,4 +1,4 @@
-import React from 'react';
+import Homepage from './Homepage';
 import EventBox from './EventBox';
 
 class EventsListBox extends React.Component {
