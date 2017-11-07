@@ -1,12 +1,13 @@
 import React from 'react';
+import CreateEventForm from './CreateEventForm'
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { events: [] };
-    this.searchEvent = this.searchEvent.bind(this);
+    this.createEvent = this.createEvent.bind(this);
   }
-  searchEvent(event) {
+  createEvent(event) {
     this.setState({ events: this.state.events.concat(event) })
     console.log(this.state.events)
   }
@@ -14,11 +15,11 @@ class Homepage extends React.Component {
     return (
       <div className="main-container">
         <div className="create-event-form">
-          <CreateEventForm />
+          <CreateEventForm createEvent={this.createEvent}/>
         </div>
-        {/* <div className="events-display">
-          <EventsListDisplay />
-        </div> */}
+        <div className="EventsListBox">
+        <EventsListBox event={this.state.events}/>
+        </div>
       </div>
     );
   }
