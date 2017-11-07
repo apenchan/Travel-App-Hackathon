@@ -26803,6 +26803,10 @@ var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _CreateEventForm = __webpack_require__(235);
+
+var _CreateEventForm2 = _interopRequireDefault(_CreateEventForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26820,26 +26824,31 @@ var Homepage = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
 
     _this.state = { events: [] };
-    _this.searchEvent = _this.searchEvent.bind(_this);
+    _this.createEvent = _this.createEvent.bind(_this);
     return _this;
   }
 
   _createClass(Homepage, [{
-    key: "searchEvent",
-    value: function searchEvent(event) {
+    key: 'creaateEvent',
+    value: function creaateEvent(event) {
       this.setState({ events: this.state.events.concat(event) });
       console.log(this.state.events);
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
-        { className: "main-container" },
+        'div',
+        { className: 'main-container' },
         _react2.default.createElement(
-          "div",
-          { className: "create-event-form" },
-          _react2.default.createElement(CreateEventForm, null)
+          'div',
+          { className: 'create-event-form' },
+          _react2.default.createElement(_CreateEventForm2.default, null)
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'EventsListBox' },
+          _react2.default.createElement(EventsListBox, { event: this.state.events })
         )
       );
     }
@@ -26849,6 +26858,13 @@ var Homepage = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Homepage;
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /***/ })
 /******/ ]);
