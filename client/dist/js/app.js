@@ -26963,14 +26963,14 @@ var CreateEventForm = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'form-inputs' },
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.startTime, placeholder: 'Start Time', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.endTime, placeholder: 'End Time', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.title, placeholder: 'Event Name', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.description, placeholder: 'Event Description', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.city, placeholder: 'Enter a City', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.country, placeholder: 'Event Country', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.picture, placeholder: 'Add a Photo', onChange: this.handleChange }),
-            _react2.default.createElement('input', { type: 'text', required: 'true', value: this.state.date, placeholder: 'Select a date', onChange: this.handleChange })
+            _react2.default.createElement('input', { type: 'text', id: 'title', required: 'true', value: this.state.startTime, placeholder: 'Start Time', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'description', required: 'true', value: this.state.endTime, placeholder: 'End Time', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'startTime', required: 'true', value: this.state.title, placeholder: 'Event Name', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'endTime', required: 'true', value: this.state.description, placeholder: 'Event Description', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'city', required: 'true', value: this.state.city, placeholder: 'Enter a City', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'country', required: 'true', value: this.state.country, placeholder: 'Event Country', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'picture', required: 'true', value: this.state.picture, placeholder: 'Add a Photo', onChange: this.handleChange }),
+            _react2.default.createElement('input', { type: 'text', id: 'date', required: 'true', value: this.state.date, placeholder: 'Select a date', onChange: this.handleChange })
           )
         )
       );
