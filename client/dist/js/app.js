@@ -26843,7 +26843,7 @@ var Homepage = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'create-event-form' },
-          _react2.default.createElement(_CreateEventForm2.default, null)
+          _react2.default.createElement(_CreateEventForm2.default, { createEvent: this.createEvent })
         ),
         _react2.default.createElement(
           'div',

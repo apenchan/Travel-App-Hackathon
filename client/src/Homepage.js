@@ -15,7 +15,7 @@ class Homepage extends React.Component {
     return (
       <div className="main-container">
         <div className="create-event-form">
-          <CreateEventForm />
+          <CreateEventForm createEvent={this.createEvent}/>
         </div>
         <div className="EventsListBox">
         <EventsListBox event={this.state.events}/>
