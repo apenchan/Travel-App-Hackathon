@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateEventForm from './CreateEventForm'
+import EventsListBox from './EventsListBox'
 
 class Homepage extends React.Component {
   constructor(props) {

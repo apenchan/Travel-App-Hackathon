@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 
-class CreateEventForm extends Component {
+class CreateEventForm extends React.Component {
   constructor (props){
     super(props);
     this.state={ 
@@ -65,6 +65,7 @@ class CreateEventForm extends Component {
           <input type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
           <input type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
           <input type="text" id="date" required="true" value={this.state.date} placeholder="Select a date" onChange={this.handleChange} />
+          <button type="submit">Add</button>
           </div>
         </form>
       </div>
