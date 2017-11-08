@@ -26,6 +26,16 @@ app.get('/*', (req, res) => {
 })
 
 //USER SERVER//
+// app.post('/user', function (req, res, next) {
+//   Users.create(req.body,function (err, savedUser) {
+//     if (err) { res.send(err) }
+//     res.send(savedUser);
+//     console.log('the user was saved')
+//   })
+// })
+
+
+//USER SERVER//
 
 app.use(expressSession({
   secret: 'yourSecretHere',
