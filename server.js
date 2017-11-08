@@ -15,13 +15,13 @@ app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 
 //USER SERVER//
-app.post('/user', function (req, res, next) {
-  Users.create(req.body,function (err, savedUser) {
-    if (err) { res.send(err) }
-    res.send(savedUser);
-    console.log('the user was saved')
-  })
-})
+// app.post('/user', function (req, res, next) {
+//   Users.create(req.body,function (err, savedUser) {
+//     if (err) { res.send(err) }
+//     res.send(savedUser);
+//     console.log('the user was saved')
+//   })
+// })
 
 app.get('/user/:userId', function (req, res, next) {
   Users.findById(req.params.userId,function (err, thisUser) {
