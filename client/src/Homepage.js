@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
+// import AuthSuccess from './AuthSuccess'
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className="main-container">
+        {/* <div className="Auth">
+          <AuthSuccess/>
+          </div> */}
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
