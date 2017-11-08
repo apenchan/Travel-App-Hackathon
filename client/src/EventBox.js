@@ -21,14 +21,15 @@ class EventBox extends Component {
                             <h4 className="card-attendees"> {this.props.event.attendees}</h4>
                             <a href="#" className="btn btn-primary">Button</a>
 
-                        </div>
-                    </div>
 
-                </div>
+						</div>
+					</div>
 
-            </div>
-        );
-    }
+				</div>
+
+			</div>
+		);
+	}
 }
 
 export default EventBox;

@@ -6,6 +6,7 @@ class App extends React.Component {
     return (
       <div>
         <br/>
+        {/* <Register createUser={this.createUser}/> */}
         <Homepage/>
       </div>
     );
