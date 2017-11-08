@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 
-class CreateEventForm extends Component {
+class CreateEventForm extends React.Component {
   constructor (props){
     super(props);
     this.state={ 
