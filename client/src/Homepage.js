@@ -8,9 +8,17 @@ class Homepage extends React.Component {
     this.state = { events: [] };
     this.createEvent = this.createEvent.bind(this);
   }
-  createEvent(title) {
+  createEvent(event) {
     var event = {
-      title : title,
+      title : event.title,
+      description: event.description,
+      startTime: event.startTime,
+      endTime: event.endTime,
+      city: event.city,
+      country : event.country,
+      // attendees:attendees,
+      picture: event.picture,
+      date:event.date
     }
     this.setState({ events: this.state.events.concat(event) })
     console.log(this.state)

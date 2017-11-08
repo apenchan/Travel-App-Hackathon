@@ -29,23 +29,24 @@ class CreateEventForm extends React.Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    axios.post('/event',{
-      title: this.props.title,
-      description: this.props.description,
-      startTime: this.props.startTime, 
-      endTime: this.props.endTime, 
-      city: this.props.city, 
-      country: this.props.country, 
-      attendees: this.props.attendees, 
-      picture: this.props.picture,
-      date: this.props.date
-    }).then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    this.props.createEvent(this.state.title);
+    // axios.post('/event',{
+    //   title: this.props.title,
+    //   description: this.props.description,
+    //   startTime: this.props.startTime, 
+    //   endTime: this.props.endTime, 
+    //   city: this.props.city, 
+    //   country: this.props.country, 
+    //   attendees: this.props.attendees, 
+    //   picture: this.props.picture,
+    //   date: this.props.date
+    // }).then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+console.log(this.state)
+    this.props.createEvent(this.state);
 
 
 
