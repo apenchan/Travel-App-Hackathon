@@ -4,6 +4,7 @@ const authRouting = require("./server/routing/authRouting.js");
 // var FacebookStrategy = require('passport-facebook').Strategy;
 var Events = require('./server/models/models.js').Events
 var mongoose = require('mongoose');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
@@ -18,22 +19,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
+app.use(cookieParser());
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './server/static/index.html'))
-})
-
 //USER SERVER//
 
-app.use(expressSession({
-  secret: 'yourSecretHere',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(expressSession({
+//   secret: 'yourSecretHere',
+//   resave: false,
+//   saveUninitialized: false
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Add the auth routing
 app.use("/auth", authRouting);
@@ -107,6 +105,9 @@ app.get('/event/:id', function (req, res, next) {
   })
 })
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './server/static/index.html'))
+})
 
 
 // start the server

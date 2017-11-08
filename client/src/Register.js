@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Login from './Login'
 import axios from 'axios'
 
 class Register extends Component {
@@ -10,13 +11,15 @@ class Register extends Component {
       username: "",
       password: ""
     }
+    this.handleSignUpForm= this.handleSignUpForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSignUpForm() {
+  handleSignUpForm(e) {
     this.setState({ [e.target.id]: e.target.value })
   }
   handleSubmit(e) {
     e.preventDefault()
-    axios.post("/register", {
+    axios.post("/auth/register", {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       username: this.state.username,
@@ -27,7 +30,7 @@ class Register extends Component {
       console.log(error);
     });
     console.log(this.state)
-    this.props.createUser(this.state);
+    // this.props.createUser(this.state);
     this.setState({
       firstName: "",
       lastName: "",
@@ -48,6 +51,7 @@ class Register extends Component {
             <button className="submit-event" type="submit">Create Acount</button>
           </form>
         </div>
+        {/* <Login/> */}
       </div>
     )
   }

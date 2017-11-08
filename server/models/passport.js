@@ -46,11 +46,17 @@ passport.use( new LocalStrategy(
       if (!dbUser.authenticate(password)) {
         return done(null, false);
       }
-
-      return done(null, dbUser);
     });
   })
 );
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
 
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
