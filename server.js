@@ -1,13 +1,16 @@
 const express = require('express');
 var path = require('path');
 var Events = require('./client/src/models.js').Events
-var Users = require('./client/src/models.js').Users
+// var Users = require('./client/src/models.js').Users
 var mongoose = require('mongoose')
 var bodyParser = require('body-parser')
 const app = express();
-var db = mongoose.connect('mongodb://localhost/travelDB', function () {
-  console.log('Travel App connection established!!!');
-})
+
+var db = process.env.MONGODB_URI || "mongodb://localhost/travelDB";
+mongoose.connect(db);
+// var db = mongoose.connect('mongodb://localhost/travelDB', function () {
+//   console.log('Travel App connection established!!!');
+// })
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -44,14 +47,26 @@ app.get('/user/:userId', function (req, res, next) {
 })
 
 
-
-app.post('/event', function (req, res, next) {
-  Events.create(req.body,function (err, savedEvent) {
-    if (err) { res.send(err) }
-    res.send(savedEvent);
-    console.log('the event was saved')
+app.post('/event', function(req, res){
+  var events = new Events(req.body);
+  events.save(function(err, events){
+    if(err){
+      console.log(err);
+    } else {
+      console.log(events)
+      res.send(events)
+    }
   })
 })
+
+// app.post('/event', function (req, res, next) {
+//   Events.create(req.body,function (err, savedEvent) {
+//     if (err) { res.send(err) }
+//     res.send(savedEvent);
+//     console.log(savedEvent)
+//     console.log('the event was saved')
+//   })
+// })
 
 app.get('/event', function (req, res, next) {
   Events.find({},function (err, allEvents) {

@@ -1,4 +1,5 @@
-var mongoose = require('mongoose')
+// import mongoose, { Schema } from 'mongoose';
+var mongoose = require('mongoose');
 
 var eventsSchema = new mongoose.Schema({ 
         description: String, 
@@ -8,19 +9,19 @@ var eventsSchema = new mongoose.Schema({
         country: String,
         attendees: Number,
         picture: String,
-        date: Date,
+        date: String,
         title: String
     }); 
      
-    var userSchema = new mongoose.Schema({
-        userName : String,
-        password : String,
-        events : [eventsSchema]
-    })
+    // var userSchema = new mongoose.Schema({
+    //     userName : String,
+    //     password : String,
+    //     events : [eventsSchema]
+    // })
     
 
-    var Events = mongoose.model('events', eventsSchema)
-    var Users = mongoose.model('users', userSchema)
+    var Events = mongoose.model('Events', eventsSchema)
+    // var Users = mongoose.model('users', userSchema)
      
-    module.exports.Events = Events;
-    module.exports.Users = Users;
+    module.exports = Events;
+    // module.exports.Users = Users;
