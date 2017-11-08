@@ -18,29 +18,38 @@ class CreateEventForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
+
+
+
   handleChange(e){
-    console.log(e.target.id)
+    // console.log(e.target.id)
     this.setState({ [e.target.id]: e.target.value })
   }
   handleSubmit(e){
     e.preventDefault();
-    axios.post('/event',{
-      title: this.props.title,
-      description: this.props.description,
-      startTime: this.props.startTime, 
-      endTime: this.props.endTime, 
-      city: this.props.city, 
-      country: this.props.country, 
-      attendees: this.props.attendees, 
-      picture: this.props.picture,
-      date: this.props.date
-    }).then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    // axios.post('/event',{
+    //   title: this.props.title,
+    //   description: this.props.description,
+    //   startTime: this.props.startTime, 
+    //   endTime: this.props.endTime, 
+    //   city: this.props.city, 
+    //   country: this.props.country, 
+    //   attendees: this.props.attendees, 
+    //   picture: this.props.picture,
+    //   date: this.props.date
+    // }).then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+console.log(this.state)
     this.props.createEvent(this.state);
+
+
+
     this.setState({
     title: "",
     description: "",
@@ -52,6 +61,11 @@ class CreateEventForm extends React.Component {
     picture: "",
     date: ""})
   }
+
+
+
+
+
   render(){
     return(
       <div className="create-event-form">
@@ -65,7 +79,7 @@ class CreateEventForm extends React.Component {
           <input type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
           <input type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
           <input type="text" id="date" required="true" value={this.state.date} placeholder="Select a date" onChange={this.handleChange} />
-          <button type="submit">Add</button>
+          <button className="submit-event" type="submit">Add</button>
           </div>
         </form>
       </div>
