@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
+import FilterForm from './filterForm'
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -8,6 +9,9 @@ class Homepage extends React.Component {
     this.state = { events: [] };
     this.createEvent = this.createEvent.bind(this);
   }
+    
+    
+   
   createEvent(event) {
     var event = {
       title : event.title,
@@ -34,6 +38,7 @@ class Homepage extends React.Component {
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
         <div className="EventsListBox">
+        <FilterForm/>
         <EventsListBox event={this.state.events}/>
         </div>
       </div>

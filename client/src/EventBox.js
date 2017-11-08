@@ -24,6 +24,6 @@ class EventBox extends Component {
             </div>
         );
     }
-}
+} 
 
 export default EventBox;
