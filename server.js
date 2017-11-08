@@ -17,19 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 
-
-
-
-// app.get('./test',(req,res) => {
-//   console.log('works')
-//   res.send('works')
-// })
-
-// app.post('./search',(req,res) => {
-// })
-
-
-
+//USER SERVER//
 app.post('/user', function (req, res, next) {
   Users.create(req.body,function (err, savedUser) {
     if (err) { res.send(err) }
@@ -47,6 +35,7 @@ app.get('/user/:userId', function (req, res, next) {
 })
 
 
+<<<<<<< HEAD
 app.post('/event', function(req, res){
   var events = new Events(req.body);
   events.save(function(err, events){
@@ -67,6 +56,25 @@ app.post('/event', function(req, res){
 //     console.log('the event was saved')
 //   })
 // })
+=======
+//EVENT SERVER//
+app.post('/event', function (req, res, next) {
+  console.log(req.body)
+  var events = new Events(req.body);
+  events.save(function (err, savedEvent) {
+      if (err) { res.send(err) }
+      res.send(savedEvent);
+      console.log('the savedEvent was saved')
+  })
+})
+
+  // Events.create(req.body,function (err, savedEvent) {
+  //   if (err) { res.send(err) }
+  //   res.send(savedEvent);
+  //   console.log('the event was saved')
+  // })
+
+>>>>>>> 14b4eca3eb55f51cf4554596e29713a8c3ffc8c5
 
 app.get('/event', function (req, res, next) {
   Events.find({},function (err, allEvents) {

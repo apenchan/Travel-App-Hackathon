@@ -2,28 +2,39 @@ import React from 'react';
 import axios from 'axios'
 
 class CreateEventForm extends React.Component {
+<<<<<<< HEAD
   constructor (props){
+=======
+  constructor(props) {
+>>>>>>> 14b4eca3eb55f51cf4554596e29713a8c3ffc8c5
     super(props);
-    this.state={ 
+    this.state = {
       title: "",
       description: "",
-      startTime: "", 
-      endTime: "", 
-      city: "", 
-      country: "", 
-      attendees: 0, 
+      startTime: "",
+      endTime: "",
+      city: "",
+      country: "",
+      attendees: 0,
       picture: "",
       date: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e){
-    console.log(e.target.id)
+
+
+
+
+
+  handleChange(e) {
+    // console.log(e.target.id)
     this.setState({ [e.target.id]: e.target.value })
   }
-  handleSubmit(e){
+
+  handleSubmit(e) {
     e.preventDefault();
+<<<<<<< HEAD
     var createEventUrl = '/event'
     axios.post(createEventUrl)
       // title: this.state.title,
@@ -50,21 +61,74 @@ class CreateEventForm extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+=======
+
+    console.log(this.state.title)
+    axios.post("/event", {
+      title: this.state.title,
+      description: this.state.description,
+      startTime: this.state.startTime,
+      endTime: this.state.endTime,
+      city: this.state.city,
+      country: this.state.country,
+      attendees: this.state.attendees,
+      picture: this.state.picture,
+      date: this.state.date
+    })
+      .then(function (response) {
+        console.log(response.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+    console.log(this.state)
+    this.props.createEvent(this.state);
+
+
+
+    this.setState({
+      title: "",
+      description: "",
+      startTime: "",
+      endTime: "",
+      city: "",
+      country: "",
+      attendees: 0,
+      picture: "",
+      date: ""
+    })
+>>>>>>> 14b4eca3eb55f51cf4554596e29713a8c3ffc8c5
   }
-  render(){
-    return(
+
+
+
+
+
+  render() {
+    return (
       <div className="create-event-form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-inputs">
+<<<<<<< HEAD
           <input type="text" id="startTime" required="true" value={this.state.startTime} placeholder="Start Time" onChange={this.handleChange} />
           <input type="text" id="endTime" required="true" value={this.state.endTime} placeholder="End Time" onChange={this.handleChange} />
           <input type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
           <input type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
+=======
+            <input type="text" id="startTime" required="true" value={this.state.startTime} placeholder="Start Time" onChange={this.handleChange} />
+          <input type="text" id="endTime" required="true" value={this.state.endTime} placeholder="End Time" onChange={this.handleChange} />
+            <input type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
+            <input type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
+>>>>>>> 14b4eca3eb55f51cf4554596e29713a8c3ffc8c5
           <input type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
           <input type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
           <input type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
           <input type="text" id="date" required="true" value={this.state.date} placeholder="Select a date" onChange={this.handleChange} />
+<<<<<<< HEAD
           <input type="submit" value="Submit"/>
+=======
+            <button className="submit-event" type="submit">Add</button>
+>>>>>>> 14b4eca3eb55f51cf4554596e29713a8c3ffc8c5
           </div>
         </form>
       </div>
