@@ -1,11 +1,11 @@
 const express = require('express');
 var path = require('path');
+const authRouting = require("./server/routing/authRouting.js");
 // var FacebookStrategy = require('passport-facebook').Strategy;
-var Events = require('./client/src/models.js').Events
-var User = require('./models/userModel');
-// var Users = require('./client/src/models.js').Users
+var Events = require('./server/models/models.js').Events
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var expressSession = require('express-session');
 var passport = require('passport');
 var expressJWT = require('express-jwt');
 var config = require('./config.js');
@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
@@ -27,16 +27,34 @@ app.get('/*', (req, res) => {
 
 //USER SERVER//
 
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' })
-);
+app.use(expressSession({
+  secret: 'yourSecretHere',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get('/auth/facebook/callback',
-passport.authenticate('facebook', { 
-                                    failureRedirect: '/login' }),
-                                    
-  function(req, res) {
-    res.redirect('/authorization?token=' + req.user.token + "&name=" + req.user.name);
-  });
+// Add the auth routing
+app.use("/auth", authRouting);
+
+// Create authentication middleware
+var ensureAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    return res.status('401').send({message: "Unauthorized" });
+  }
+};
+
+
+app.get('/currentuser', ensureAuthenticated, function(req, res) {
+  if (req.user) {
+    res.send(req.user.username)
+  } else {
+    res.send(null)  
+  }
+});
 
 // app.post('/user', function (req, res, next) {
 //   Users.create(req.body,function (err, savedUser) {
@@ -46,13 +64,13 @@ passport.authenticate('facebook', {
 //   })
 // })
 
-app.get('/user/:userId', function (req, res, next) {
-  Users.findById(req.params.userId,function (err, thisUser) {
-    if (err) { res.send(err) }
-    res.send(thisUser);
-    console.log('get this specific user')
-  })
-})
+// app.get('/user/:userId', function (req, res, next) {
+//   Users.findById(req.params.userId,function (err, thisUser) {
+//     if (err) { res.send(err) }
+//     res.send(thisUser);
+//     console.log('get this specific user')
+//   })
+// })
 
 
 //EVENT SERVER//
