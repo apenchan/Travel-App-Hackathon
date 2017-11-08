@@ -31,7 +31,9 @@ class CreateEventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state.title)
+    console.log(this.state)
+    let currentComponent = this;
+
     axios.post("/event", {
       title: this.state.title,
       description: this.state.description,
@@ -43,16 +45,20 @@ class CreateEventForm extends React.Component {
       picture: this.state.picture,
       date: this.state.date
     })
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
+        // currentComponent.setState({ title: currentComponent.state.title.concat(response.data.title) })
+        console.log(this.state)
+        this.props.createEvent(response.data);
+    
+
       }).catch(function (error) {
         console.log(error);
       });
 
-    console.log(this.state)
-    this.props.createEvent(this.state);
+    // this.props.createEvent(this.state);
 
-
+   
 
     this.setState({
       title: "",

@@ -1,25 +1,36 @@
 import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
-
+import axios from 'axios'
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { events: [] };
     this.createEvent = this.createEvent.bind(this);
   }
+
+
+  componentWillMount() {
+    let currentComponent = this;
+    axios.get("/event")
+        .then(function (response) {
+            console.log(response.data);
+            // data = response.data
+            currentComponent.setState({ events: response.data })
+            console.log(currentComponent.state)
+            // currentComponent.mapTheEvents()
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+}
   createEvent(event) {
-    var event = {
-      title : event.title,
-      description: event.description,
-      startTime: event.startTime,
-      endTime: event.endTime,
-      city: event.city,
-      country : event.country,
-      // attendees:attendees,
-      picture: event.picture,
-      date:event.date
-    }
+    
+  //   this.setState((prevState) => ({
+  //     events: prevState.events.concat(structure)
+  //   }));
+  //   console.log(this.state)
+  // };
     this.setState({ events: this.state.events.concat(event) })
     console.log(this.state)
   }
@@ -34,7 +45,7 @@ class Homepage extends React.Component {
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
         <div className="EventsListBox">
-        <EventsListBox event={this.state.events}/>
+        <EventsListBox events={this.state.events}/>
         </div>
       </div>
     );

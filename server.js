@@ -43,13 +43,6 @@ app.post('/event', function (req, res, next) {
   })
 })
 
-  // Events.create(req.body,function (err, savedEvent) {
-  //   if (err) { res.send(err) }
-  //   res.send(savedEvent);
-  //   console.log('the event was saved')
-  // })
-
-
 app.get('/event', function (req, res, next) {
   Events.find({},function (err, allEvents) {
     if (err) { res.send(err) }
