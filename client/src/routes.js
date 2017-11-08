@@ -7,6 +7,7 @@ const Routes = () => (
     <div className="container">
         <Switch>
             <Route name="home" exact path='/' component={MainApp} />
+            {/* <Route path="auth/facebook/success" component={AuthSuccess} /> */}
             <Route path="*" component={Page404}/>
         </Switch>
     </div>

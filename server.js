@@ -1,9 +1,14 @@
 const express = require('express');
 var path = require('path');
+// var FacebookStrategy = require('passport-facebook').Strategy;
 var Events = require('./client/src/models.js').Events
-var Users = require('./client/src/models.js').Users
-var mongoose = require('mongoose')
-var bodyParser = require('body-parser')
+var User = require('./models/userModel');
+// var Users = require('./client/src/models.js').Users
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var expressJWT = require('express-jwt');
+var config = require('./config.js');
 const app = express();
 var db = mongoose.connect('mongodb://localhost/travelDB', function () {
   console.log('Travel App connection established!!!');
@@ -13,15 +18,33 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './server/static/index.html'))
+})
 
 //USER SERVER//
-app.post('/user', function (req, res, next) {
-  Users.create(req.body,function (err, savedUser) {
-    if (err) { res.send(err) }
-    res.send(savedUser);
-    console.log('the user was saved')
-  })
-})
+
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' })
+);
+
+app.get('/auth/facebook/callback',
+passport.authenticate('facebook', { 
+                                    failureRedirect: '/login' }),
+                                    
+  function(req, res) {
+    res.redirect('/authorization?token=' + req.user.token + "&name=" + req.user.name);
+  });
+
+// app.post('/user', function (req, res, next) {
+//   Users.create(req.body,function (err, savedUser) {
+//     if (err) { res.send(err) }
+//     res.send(savedUser);
+//     console.log('the user was saved')
+//   })
+// })
 
 app.get('/user/:userId', function (req, res, next) {
   Users.findById(req.params.userId,function (err, thisUser) {
@@ -66,13 +89,6 @@ app.get('/event/:id', function (req, res, next) {
   })
 })
 
-
-
-
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './server/static/index.html'))
-})
 
 
 // start the server
