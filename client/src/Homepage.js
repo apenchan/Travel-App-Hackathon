@@ -12,26 +12,22 @@ class Homepage extends React.Component {
 
 
   componentWillMount() {
+    console.log(this.state)
     let currentComponent = this;
     axios.get("/event")
         .then(function (response) {
             console.log(response.data);
-            // data = response.data
             currentComponent.setState({ events: response.data })
             console.log(currentComponent.state)
-            // currentComponent.mapTheEvents()
+           
 
         }).catch(function (error) {
             console.log(error);
         });
 }
+
+
   createEvent(event) {
-    
-  //   this.setState((prevState) => ({
-  //     events: prevState.events.concat(structure)
-  //   }));
-  //   console.log(this.state)
-  // };
     this.setState({ events: this.state.events.concat(event) })
     console.log(this.state)
   }
@@ -42,9 +38,6 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className="main-container">
-        {/* <div className="Auth">
-          <AuthSuccess/>
-          </div> */}
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
