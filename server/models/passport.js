@@ -13,9 +13,9 @@ JwtOpts.jwtFromRequest = function(req) {
   return token;
 };
 
-//Remove this before deploy
-JwtOpts.secretOrKey = process.env.JWT_SECRET;
+// Remove this before deploy
 
+JwtOpts.secretOrKey = require("crypto").randomBytes(32).toString("hex");
 
 passport.use(new JwtStrategy(JwtOpts, function(jwt_payload, done) {
     console.log( "JWT PAYLOAD" + util.inspect(jwt_payload));
@@ -52,8 +52,13 @@ passport.use( new LocalStrategy(
   })
 );
 
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+  done(null, user);
+ });
+ 
+ passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
 
 
 module.exports = passport;

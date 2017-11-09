@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
