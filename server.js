@@ -15,6 +15,41 @@ app.use(express.static('./client/dist/'));
 
 
 
+
+//USER SERVER//
+// app.post('/user', function (req, res, next) {
+//   Users.create(req.body,function (err, savedUser) {
+//     if (err) { res.send(err) }
+//     res.send(savedUser);
+//     console.log('the user was saved')
+//   })
+// })
+
+
+//USER SERVER//
+
+app.use(expressSession({
+  secret: 'yourSecretHere',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Add the auth routing
+app.use("/auth", authRouting);
+
+// Create authentication middleware
+var ensureAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    return res.status('401').send({message: "Unauthorized" });
+  }
+};
+
+
+
 // app.post('/user', function (req, res, next) {
 //   Users.create(req.body,function (err, savedUser) {
 //     if (err) { res.send(err) }
@@ -62,7 +97,6 @@ app.get('/event/:id', function (req, res, next) {
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
 })
-
 
 // start the server
 app.listen(3000, () => {
