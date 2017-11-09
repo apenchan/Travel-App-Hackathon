@@ -10,6 +10,7 @@ var db = mongoose.connect('mongodb://localhost/travelDB', function () {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('node_modules'));
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 

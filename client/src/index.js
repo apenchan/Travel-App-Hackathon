@@ -1,5 +1,7 @@
 import React from 'react';
 import Homepage from './Homepage'
+// import {Button, Icon} from 'react-materialize'
+
 
 class App extends React.Component {
   render() {
@@ -12,5 +14,9 @@ class App extends React.Component {
     );
   }
 }
-
+// export default () => (
+// 	<Button waves='light'>
+// 		<Icon>thumb_up</Icon>
+// 	</Button>
+// )
 export default App;
