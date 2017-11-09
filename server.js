@@ -1,9 +1,8 @@
 const express = require('express');
 var path = require('path');
-var Events = require('./client/src/models.js').Events
-var Users = require('./client/src/models.js').Users
-var mongoose = require('mongoose')
-var bodyParser = require('body-parser')
+var Events = require('./server/models/models.js').Events
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 const app = express();
 var db = mongoose.connect('mongodb://localhost/travelDB', function() {
     console.log('Travel App connection established!!!');
@@ -15,22 +14,25 @@ app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 app.use(express.static('./node_modules/'));
 
-//USER SERVER//
-app.post('/user', function(req, res, next) {
-    Users.create(req.body, function(err, savedUser) {
-        if (err) { res.send(err) }
-        res.send(savedUser);
-        console.log('the user was saved')
-    })
-})
 
-app.get('/user/:userId', function(req, res, next) {
-    Users.findById(req.params.userId, function(err, thisUser) {
-        if (err) { res.send(err) }
-        res.send(thisUser);
-        console.log('get this specific user')
-    })
-})
+//USER SERVER//
+
+// app.post('/user', function (req, res, next) {
+//   Users.create(req.body,function (err, savedUser) {
+//     if (err) { res.send(err) }
+//     res.send(savedUser);
+//     console.log('the user was saved')
+//   })
+// })
+
+// app.get('/user/:userId', function (req, res, next) {
+//   Users.findById(req.params.userId,function (err, thisUser) {
+//     if (err) { res.send(err) }
+//     res.send(thisUser);
+//     console.log('get this specific user')
+//   })
+// })
+
 
 
 //EVENT SERVER//
@@ -44,12 +46,6 @@ app.post('/event', function(req, res, next) {
     })
 })
 
-// Events.create(req.body,function (err, savedEvent) {
-//   if (err) { res.send(err) }
-//   res.send(savedEvent);
-//   console.log('the event was saved')
-// })
-
 
 app.get('/event', function(req, res, next) {
     Events.find({}, function(err, allEvents) {
@@ -57,6 +53,7 @@ app.get('/event', function(req, res, next) {
         res.send(allEvents);
         console.log('get all events')
     })
+
 })
 
 app.get('/event/:id', function(req, res, next) {
@@ -66,10 +63,6 @@ app.get('/event/:id', function(req, res, next) {
         console.log('get this specific event')
     })
 })
-
-
-
-
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './server/static/index.html'))
