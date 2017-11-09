@@ -24,7 +24,7 @@ router.post('/register', function (req, res){
 router.use(passport.authenticate('jwt', { session: false }));
 
 //lets get the following back if login is successful. post request ;)
-router.post('/login', passport.authenticate('local', {session: false}), function(req, res, next){
+router.post('/', passport.authenticate('local', {session: false}), function(req, res, next){
 	console.log("the login seems to be successful. Let's celebrate");
 	console.log('req.body:' + req.body);
 	console.log(req.body.username)

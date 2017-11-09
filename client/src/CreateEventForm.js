@@ -51,9 +51,6 @@ class CreateEventForm extends React.Component {
 
     console.log(this.state)
     this.props.createEvent(this.state);
-
-
-
     this.setState({
       title: "",
       description: "",
@@ -66,11 +63,6 @@ class CreateEventForm extends React.Component {
       date: ""
     })
   }
-
-
-
-
-
   render() {
     return (
       <div className="create-event-form">
