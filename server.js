@@ -1,14 +1,8 @@
 const express = require('express');
 var path = require('path');
-const authRouting = require("./server/routing/authRouting.js");
-// var FacebookStrategy = require('passport-facebook').Strategy;
 var Events = require('./server/models/models.js').Events
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var expressSession = require('express-session');
-var passport = require('passport');
-var expressJWT = require('express-jwt');
-var config = require('./config.js');
 const app = express();
 var db = mongoose.connect('mongodb://localhost/travelDB', function () {
   console.log('Travel App connection established!!!');
@@ -18,12 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
-// app.use(passport.initialize());
-// app.use(passport.session());
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './server/static/index.html'))
-})
+
+
 
 //USER SERVER//
 // app.post('/user', function (req, res, next) {
@@ -58,13 +49,6 @@ var ensureAuthenticated = function(req, res, next) {
 };
 
 
-app.get('/currentuser', ensureAuthenticated, function(req, res) {
-  if (req.user) {
-    res.send(req.user.username)
-  } else {
-    res.send(null)  
-  }
-});
 
 // app.post('/user', function (req, res, next) {
 //   Users.create(req.body,function (err, savedUser) {
@@ -94,13 +78,6 @@ app.post('/event', function (req, res, next) {
   })
 })
 
-  // Events.create(req.body,function (err, savedEvent) {
-  //   if (err) { res.send(err) }
-  //   res.send(savedEvent);
-  //   console.log('the event was saved')
-  // })
-
-
 app.get('/event', function (req, res, next) {
   Events.find({},function (err, allEvents) {
     if (err) { res.send(err) }
@@ -117,7 +94,9 @@ app.get('/event/:id', function (req, res, next) {
   })
 })
 
-
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './server/static/index.html'))
+})
 
 // start the server
 app.listen(3000, () => {

@@ -13,7 +13,7 @@ class CreateEventForm extends React.Component {
       country: "",
       attendees: 0,
       picture: "",
-      date: ""
+      date: "",
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,14 +24,14 @@ class CreateEventForm extends React.Component {
 
 
   handleChange(e) {
-    // console.log(e.target.id)
     this.setState({ [e.target.id]: e.target.value })
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state)
 
-    console.log(this.state.title)
+
     axios.post("/event", {
       description: this.state.description,
       startTime: this.state.startTime,
@@ -43,16 +43,14 @@ class CreateEventForm extends React.Component {
       date: this.state.date,
       title: this.state.title
     })
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
+        this.props.createEvent(response.data);
+
+
       }).catch(function (error) {
         console.log(error);
       });
-
-    console.log(this.state)
-    this.props.createEvent(this.state);
-
-
 
     this.setState({
       title: "",
@@ -83,7 +81,8 @@ class CreateEventForm extends React.Component {
             <input type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
             <input type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
             <input type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
-            <input type="text" id="date" required="true" value={this.state.date} placeholder="Select a date" onChange={this.handleChange} />
+            <input type="date" id="date" required="true" value={this.state.date} placeholder="Select a date" onChange={this.handleChange} />
+
             <button className="submit-event" type="submit">Add</button>
           </div>
         </form>
