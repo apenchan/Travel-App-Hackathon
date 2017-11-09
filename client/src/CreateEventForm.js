@@ -48,15 +48,13 @@ class CreateEventForm extends React.Component {
     e.preventDefault();
     console.log(this.state)
 
-
-
     axios.post("/event", {
       description: this.state.description,
       startTime: this.state.startTime,
       endTime: this.state.endTime,
       city: this.state.city,
       country: this.state.country,
-      attendees: 0,
+      attendees: this.state.attendees,
       picture: this.state.picture,
       date: this.state.date._d,
       title: this.state.title
@@ -87,9 +85,11 @@ class CreateEventForm extends React.Component {
   render() {
 
     return (
+      
       <div className="create-event-form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-inputs">
+
             <input type="text" id="startTime" required="true" value={this.state.startTime} placeholder="Start Time" onChange={this.handleChange} />
             <input type="text" id="endTime" required="true" value={this.state.endTime} placeholder="End Time" onChange={this.handleChange} />
             <input type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
@@ -101,8 +101,7 @@ class CreateEventForm extends React.Component {
              <DatePicker
               selected={this.state.date} placeholder="choose date" 
               onSelect={this.handleDataChange} />
-            <button className="submit-event" type="submit">Add</button>
-           
+            <button className="submit-event" type="submit">Add Event</button>
 
           </div>
         </form>
