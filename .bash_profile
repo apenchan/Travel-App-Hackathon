@@ -1,0 +1,3 @@
+#MY_KEYS
+
+export JWT_SECRET="c7645930211dogheart4"

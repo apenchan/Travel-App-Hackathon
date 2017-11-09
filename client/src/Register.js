@@ -6,10 +6,14 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      username: "",
-      password: ""
+      firstName: this.props.initialCreate,
+      lastName: this.props.initialCreate,
+      username: this.props.initialCreate,
+      password: this.props.initialCreate,
+      // firstName: "",
+      // lastName: "",
+      // username: "",
+      // password: ""
     }
     this.handleSignUpForm= this.handleSignUpForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,10 +36,14 @@ class Register extends Component {
     console.log(this.state)
     // this.props.createUser(this.state);
     this.setState({
-      firstName: "",
-      lastName: "",
-      username: "",
-      password: ""
+      // firstName: "",
+      // lastName: "",
+      // username: "",
+      // password: ""
+      firstName: this.props.initialCreate,
+      lastName: this.props.initialCreate,
+      username: this.props.initialCreate,
+      password: this.props.initialCreate
     })
   }
   render() {
