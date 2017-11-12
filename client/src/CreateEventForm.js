@@ -19,14 +19,14 @@ class CreateEventForm extends React.Component {
       startDate: moment()
     }
 
-  
+
     this.handleChange = this
       .handleChange
       .bind(this);
     this.handleStartDateChange = this
       .handleStartDateChange
       .bind(this);
-      this.handleEndDateChange = this
+    this.handleEndDateChange = this
       .handleEndDateChange
       .bind(this);
     this.handleSubmit = this
@@ -98,22 +98,17 @@ class CreateEventForm extends React.Component {
       <div className="create-event-form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-inputs">
-          <DatePicker className="input" id="startTime"  placeholderText="Choose a start time" selected={this.state.startDate} onChange={this.handleStartDateChange}
-              showTimeSelect  timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal
-/>  
-          <DatePicker className="input" id="endTime"  placeholder="End Time" selected={this.state.endDate} onChange={this.handleEndDateChange}
-              showTimeSelect  timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal
-/>
+            <DatePicker className="input" id="startTime" placeholderText="Choose a start time" selected={this.state.startDate} onChange={this.handleStartDateChange}
+              showTimeSelect timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal />
+
+            <DatePicker className="input" id="endTime" placeholder="End Time" selected={this.state.endDate} onChange={this.handleEndDateChange}
+              showTimeSelect timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal />
+
             <input className="input" type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
             <input className="input" type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
             <input className="input" type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
             <input className="input" type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
-            <input  className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
-            {/* <DatePicker
-              className="input"
-              selected={this.state.date} placeholderText="Choose a date"
-              onSelect={this.handleDataChange} withPortal
-            /> */}
+            <input className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
 
             <button className="submit-event input" type="submit">Add Event</button>
 
