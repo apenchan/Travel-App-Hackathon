@@ -14,6 +14,8 @@ var eventsSchema = new mongoose.Schema({
     startDate: Date,
     title: String,
 });
+ 
+
 
 // var userSchema = new mongoose.Schema({
 //     userName : String,

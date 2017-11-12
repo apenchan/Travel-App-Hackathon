@@ -25,8 +25,6 @@ class CreateEventForm extends React.Component {
     }
     this.onChange = (address) => this.setState({ address })
 
-  
-  
     this.handleChange = this
       .handleChange
       .bind(this);
@@ -35,7 +33,7 @@ class CreateEventForm extends React.Component {
       .handleStartDateChange
       .bind(this);
 
-      this.handleEndDateChange = this
+    this.handleEndDateChange = this
       .handleEndDateChange
       .bind(this);
 
@@ -133,12 +131,12 @@ class CreateEventForm extends React.Component {
       <div className="create-event-form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-inputs">
-          <DatePicker className="input" id="startTime"  placeholderText="Choose a start time" selected={this.state.startDate} onChange={this.handleStartDateChange}
-              showTimeSelect  timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal
-/>  
-          <DatePicker className="input" id="endTime"  placeholder="End Time" selected={this.state.endDate} onChange={this.handleEndDateChange}
-              showTimeSelect  timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal
-/>
+            <DatePicker className="input" id="startTime" placeholderText="Choose a start time" selected={this.state.startDate} onChange={this.handleStartDateChange}
+              showTimeSelect timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal />
+
+            <DatePicker className="input" id="endTime" placeholder="End Time" selected={this.state.endDate} onChange={this.handleEndDateChange}
+              showTimeSelect timeFormat="HH:mm" timeIntervals={15} dateFormat="LLL" withPortal />
+
             <input className="input" type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
             <input className="input" type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
             <input className="input" type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
