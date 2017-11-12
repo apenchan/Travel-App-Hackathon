@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios'
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import { Button } from 'react-bootstrap';
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -11,17 +14,34 @@ class CreateEventForm extends React.Component {
       endTime: "",
       city: "",
       country: "",
+      address : "",
       attendees: 0,
       picture: "",
-      date: "",
+      date: moment()
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+  
+    this.handleChange = this
+      .handleChange
+      .bind(this);
+    this.handleDataChange = this
+      .handleDataChange
+      .bind(this);
+    this.handleSubmit = this
+      .handleSubmit
+      .bind(this);
   }
 
+  handleChange(e) {
+    console.log(e.target.id)
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
 
-
-
+  handleDataChange(date) {
+    this.setState({ date: date })
+  }
 
   handleChange(e) {
     this.setState({ [e.target.id]: e.target.value })
@@ -31,16 +51,15 @@ class CreateEventForm extends React.Component {
     e.preventDefault();
     console.log(this.state)
 
-
     axios.post("/event", {
       description: this.state.description,
       startTime: this.state.startTime.toString,
       endTime: this.state.endTime,
       city: this.state.city,
       country: this.state.country,
-      attendees: 0,
+      attendees: this.state.attendees,
       picture: this.state.picture,
-      date: this.state.date,
+      date: this.state.date._d,
       title: this.state.title
     })
       .then((response) => {
@@ -52,6 +71,7 @@ class CreateEventForm extends React.Component {
         console.log(error);
       });
 
+
     this.setState({
       title: "gg",
       description: "",
@@ -61,33 +81,37 @@ class CreateEventForm extends React.Component {
       country: "",
       attendees: 0,
       picture: "",
-      date: ""
+      date: moment()
     })
   }
 
-
-
-
-
   render() {
+
     return (
+
       <div className="create-event-form">
         <form onSubmit={this.handleSubmit}>
           <div className="form-inputs">
-            <input type="date" id="startTime" required="true" value={this.state.startTime} placeholder="Startime" onChange={this.handleChange} />
-          <input type="date" id="endTime" required="true" value={this.state.endTime} placeholder="End Time" onChange={this.handleChange} />
-            <input type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
-            <input type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
-            <input type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
-            <input type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
-            <input type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
-            <input type="date" id="date" required="true" value={this.state.date} placeholder="Select a date" onChange={this.handleChange} />
 
-            <button className="submit-event" type="submit">Add</button>
+            <input className="input-time input" type="text" id="startTime" required="true" value={this.state.startTime} placeholder="Start Time" onChange={this.handleChange} />
+            <input className="input-time input" type="text" id="endTime" required="true" value={this.state.endTime} placeholder="End Time" onChange={this.handleChange} />
+            <input className="input" type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
+            <input className="input" type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
+            <input className="input" type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
+            <input className="input" type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
+            <input  className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
+            <DatePicker
+              className="input"
+              selected={this.state.date} placeholderText="Choose a date"
+              onSelect={this.handleDataChange}
+            />
+            <button className="submit-event input" type="submit">Add Event</button>
+
           </div>
         </form>
       </div>
     )
+
   }
 
 }
