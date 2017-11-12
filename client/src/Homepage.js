@@ -2,6 +2,8 @@ import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
 import axios from 'axios'
+import FilterEvent from './filterForm'
+
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -41,8 +43,9 @@ class Homepage extends React.Component {
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
-        <div className="EventsListBox">
-        <EventsListBox events={this.state.events}/>
+        <div className="EventsListBox">      
+        <EventsListBox mapEvents={this.state.events}/>
+        <FilterEvent/>
         </div>
       </div>
     );

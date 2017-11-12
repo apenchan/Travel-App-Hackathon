@@ -34,7 +34,7 @@ class CreateEventForm extends React.Component {
 
     axios.post("/event", {
       description: this.state.description,
-      startTime: this.state.startTime,
+      startTime: this.state.startTime.toString,
       endTime: this.state.endTime,
       city: this.state.city,
       country: this.state.country,
