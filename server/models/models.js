@@ -7,10 +7,12 @@ var eventsSchema = new mongoose.Schema({
     city: String,
     country: String,
     address: String,
+    lat: Number,
+    lng: Number,
     attendees: Number,
     picture: String,
     startDate: Date,
-    title: String
+    title: String,
 });
 
 // var userSchema = new mongoose.Schema({

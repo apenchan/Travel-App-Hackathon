@@ -3,6 +3,8 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { Button } from 'react-bootstrap';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+
 
 class CreateEventForm extends React.Component {
   constructor(props) {
@@ -14,32 +16,43 @@ class CreateEventForm extends React.Component {
       endDate: moment(),
       city: "",
       country: "",
-      address : "",
       attendees: 0,
       picture: "",
-      startDate: moment()
+      startDate: moment(),
+      address: 'San Francisco, CA',
+      lat: 0,
+      lng: 0
     }
+    this.onChange = (address) => this.setState({ address })
 
+  
   
     this.handleChange = this
       .handleChange
       .bind(this);
+
     this.handleStartDateChange = this
       .handleStartDateChange
       .bind(this);
+
       this.handleEndDateChange = this
       .handleEndDateChange
       .bind(this);
+
     this.handleSubmit = this
       .handleSubmit
       .bind(this);
+
+  
   }
 
+  
   handleChange(e) {
     console.log(e.target.id)
     this.setState({
       [e.target.id]: e.target.value
     })
+    console.log(this.state)
   }
 
   handleStartDateChange(date) {
@@ -50,36 +63,40 @@ class CreateEventForm extends React.Component {
     this.setState({ endDate: date })
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.id]: e.target.value })
-  }
+
+
 
   handleSubmit(e) {
+    let that = this;
     e.preventDefault();
-    console.log(this.state)
 
-    axios.post("/event", {
-      description: this.state.description,
-      startTime: this.state.startTime,
-      endDate: this.state.endDate._d,
-      startDate: this.state.startDate._d,
-      city: this.state.city,
-      country: this.state.country,
-      attendees: this.state.attendees,
-      picture: this.state.picture,
-      title: this.state.title
+    geocodeByAddress(this.state.address)
+      .then(results => getLatLng(results[0]))
+      .then(function(latLng){
+        let lat = latLng.lat
+        let lng = latLng.lng
+        console.log(lat +':'+ lng)
+        that.setState({ lat: latLng.lat, lng: latLng.lng })
+        debugger
+        console.log(that.state)
+
+      axios.post("/event", {
+      description: that.state.description,
+      startTime: that.state.startTime,
+      endDate: that.state.endDate._d,
+      startDate: that.state.startDate._d,
+      city: that.state.city,
+      country: that.state.country,
+      attendees: that.state.attendees,
+      picture: that.state.picture,
+      title: that.state.title,
+      address: that.state.address,
+      lat: that.state.lat,
+      lng: that.state.lng,
     })
       .then((response) => {
-        console.log(response.data);
-        this.props.createEvent(response.data);
-
-
-      }).catch(function (error) {
-        console.log(error);
-      });
-
-
-    this.setState({
+        that.props.createEvent(response.data);
+      that.setState({
       title: "",
       description: "",
       startTime: "",
@@ -88,11 +105,28 @@ class CreateEventForm extends React.Component {
       country: "",
       attendees: 0,
       picture: "",
-      startDate: moment()
+      startDate: moment(),
+      address: 'San Francisco, CA',
+      lat: 0,
+      lng: 0
     })
+    console.log(this.state)
+
+      }).catch(function (error) {
+        console.log(error);
+      });
+      })
+      .catch(error => console.error('Error', error))
+      
+
+
+
   }
 
   render() {
+    const inputProps = {
+      value: this.state.address,
+      onChange: this.onChange,}
 
     return (
 
@@ -110,13 +144,8 @@ class CreateEventForm extends React.Component {
             <input className="input" type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
             <input className="input" type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
             <input  className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
-            {/* <DatePicker
-              className="input"
-              selected={this.state.date} placeholderText="Choose a date"
-              onSelect={this.handleDataChange} withPortal
-            /> */}
-
             <button className="submit-event input" type="submit">Add Event</button>
+            <PlacesAutocomplete id='address' onChange={this.handleChange} inputProps={inputProps} />
 
           </div>
         </form>
