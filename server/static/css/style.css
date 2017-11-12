@@ -120,10 +120,13 @@ border: 3px solid rgba(85, 85, 85, 0.67);
 }
 
 .card-body-details{
-    position: relative;
-    left: 450px;
+    /* left: 450px;
     bottom: 210px;
-}
+    position: relative; */
+    padding: 10px;
+    /* text-align: left;
+    bottom: 210px; */
+} 
 
 .btn-join{
     margin-left: 100px;
@@ -134,3 +137,4 @@ border: 3px solid rgba(85, 85, 85, 0.67);
 .fa{
     margin : 5px;
 }
+
