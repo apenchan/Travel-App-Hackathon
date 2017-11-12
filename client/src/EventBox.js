@@ -15,9 +15,7 @@ class EventBox extends React.Component {
             eventStartTime: null,
             eventEndDate: null,
             eventEndTime: null,
-
         }
-        this.getTheEvent = this.getTheEvent.bind(this)
     }
 
     
@@ -56,25 +54,11 @@ if (EndMinute==0) {EndMinute = '00'}
     }
 
 
-    getTheEvent() {
-        console.log(this.props.event._id)
-        var eventId = this.props.event._id
-        console.log("Im clicked")
-        axios.get("/event/" + eventId)
-            .then((response) => {
-                console.log(response.data);
-                this.setState({ thisEvent: response.data })
-                console.log(this.state.thisEvent)
-            }).catch(function (error) {
-                console.log(error);
-            });
-    }
 
 
 
     render() {
-        // var input = document.getElementById('autocomplete');
-        // var autocomplete = new google.maps.places.Autocomplete(input{types: ['geocode']});
+        
         return (
 
             <div className="col-md-3">
@@ -91,13 +75,10 @@ if (EndMinute==0) {EndMinute = '00'}
                             <h4 className="card-time">End time : {this.state.eventEndDate} {this.state.eventEndTime}</h4>
                             <h4 className="card-attendees"> Max number of people: {this.props.event.attendees}</h4>
 
-                            <BrowserRouter>
-                                <div>
-                                    <Link href="#" className="btn btn-primary" onClick={this.getTheEvent} to="/moreDetails">More Details</Link>
-                                    <Route path="/moreDetails"  render={()=><DetailsEvent thisEvent={this.state.thisEvent}/>} />
-                                    
+                            
+                            <div className="details">
+                                <Link to={'/moreDetails/' + this.props.event._id}>More Details</Link>
                                 </div>
-                            </BrowserRouter>
 
                         </div>
                     </div>

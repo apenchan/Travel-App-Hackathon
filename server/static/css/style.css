@@ -99,3 +99,40 @@
         margin-left: 2vw;
     }
 }
+
+
+
+.details{
+    width: 100%;
+    height: 100%;
+    margin-top: 70px;
+    position: relative;
+   
+}
+
+.detail-img{
+    width : 40%;
+    height : auto;
+    border : 3px solid black;
+    margin-left: 6px
+}
+
+.card-body-details{
+    /* left: 450px;
+    bottom: 210px;
+    position: relative; */
+    padding: 10px;
+    /* text-align: left;
+    bottom: 210px; */
+} 
+
+.btn-join{
+    margin-left: 100px;
+    width: 20%;
+    height: 30px;
+    line-height: 2;
+}
+.fa{
+    margin : 5px;
+}
+
