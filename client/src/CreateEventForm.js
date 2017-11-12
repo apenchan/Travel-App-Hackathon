@@ -14,7 +14,6 @@ class CreateEventForm extends React.Component {
       endTime: "",
       city: "",
       country: "",
-      address : "",
       attendees: 0,
       picture: "",
       date: moment()

@@ -6,7 +6,6 @@ var eventsSchema = new mongoose.Schema({
         endTime: String,
         city: String,
         country: String,
-        address : String,
         attendees: Number,
         picture: String,
         date : Date,

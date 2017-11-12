@@ -12,9 +12,7 @@ class EventBox extends React.Component {
         super(props)
         this.state = {
             eventDate: null,
-            thisEvent: {}
         }
-        this.getTheEvent = this.getTheEvent.bind(this)
     }
 
     //I CREATED AN OBJECT TO HAVE ACCESS TO THE DATE FROM THE DB
@@ -31,25 +29,12 @@ class EventBox extends React.Component {
     }
 
 
-    getTheEvent() {
-        console.log(this.props.event._id)
-        var eventId = this.props.event._id
-        console.log("Im clicked")
-        axios.get("/event/" + eventId)
-            .then((response) => {
-                console.log(response.data);
-                this.setState({ thisEvent: response.data })
-                console.log(this.state.thisEvent)
-            }).catch(function (error) {
-                console.log(error);
-            });
-    }
 
 
 
     render() {
-        // var input = document.getElementById('autocomplete');
-        // var autocomplete = new google.maps.places.Autocomplete(input{types: ['geocode']});
+        // var event = this.props.event._id
+        // console.log(event)
         return (
 
             <div className="col-md-3">
@@ -66,13 +51,10 @@ class EventBox extends React.Component {
                             <h4 className="card-time"> {this.props.event.startTime} / {this.props.event.endTime} -- {this.state.eventDate} </h4>
                             <h4 className="card-attendees"> Max number of people: {this.props.event.attendees}</h4>
 
-                            <BrowserRouter>
-                                <div>
-                                    <Link href="#" className="btn btn-primary" onClick={this.getTheEvent} to="/moreDetails">More Details</Link>
-                                    <Route path="/moreDetails"  render={()=><DetailsEvent thisEvent={this.state.thisEvent}/>} />
-                                    
+                            
+                            <div className="details">
+                                <Link to={'/moreDetails/' + this.props.event._id}>More Details</Link>
                                 </div>
-                            </BrowserRouter>
 
                         </div>
                     </div>
