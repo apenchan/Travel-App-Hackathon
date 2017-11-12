@@ -27,7 +27,6 @@ class Homepage extends React.Component {
 
   createEvent(event) {
     this.setState({ events: this.state.events.concat(event) })
-    console.log(this.state)
   }
 
 
