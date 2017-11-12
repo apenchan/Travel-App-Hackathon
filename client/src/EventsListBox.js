@@ -1,10 +1,10 @@
-import React from 'react'; import Homepage from './Homepage';
+import React from 'react'; 
 import EventBox from './EventBox';
-import axios from 'axios'
+
 class EventsListBox extends React.Component {
 
     mapTheEvents() {
-        return this.props.events.map((event, index) => <EventBox key={index} event={event}></EventBox>
+        return this.props.events.map((event, index) => <EventBox key={index} index={index} event={event}></EventBox>
 
         )
     }

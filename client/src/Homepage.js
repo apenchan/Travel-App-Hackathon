@@ -19,8 +19,6 @@ class Homepage extends React.Component {
             console.log(response.data);
             currentComponent.setState({ events: response.data })
             console.log(currentComponent.state)
-           
-
         }).catch(function (error) {
             console.log(error);
         });

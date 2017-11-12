@@ -10,6 +10,7 @@ const Routes = () => (
         <Switch>
             <Route name="home" exact path='/' component={MainApp} />
             <Route path="*" component={Page404}/>
+            
         </Switch>
     </div>
 )

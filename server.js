@@ -58,6 +58,7 @@ app.get('/event', function(req, res, next) {
 })
 
 app.get('/event/:id', function(req, res, next) {
+    console.log(req.params.id)
     Events.findById(req.params.id, function(err, thisEvent) {
         if (err) { res.send(err) }
         res.send(thisEvent);
