@@ -18,6 +18,17 @@ module.exports = {
     // },
     module: {
         loaders: [{
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              'file-loader',
+              {
+                loader: 'image-webpack-loader',
+                options: {
+                  bypassOnDebug: true,
+                },
+              },
+            ],
+          },{
             test: /\.js?$/,
             include: path.join(__dirname, '/client/src'),
             loader: 'babel-loader',
@@ -25,19 +36,8 @@ module.exports = {
                 presets: ["react", "es2015"]
             },
 
-        }],
-    },
-    module: {
-        loaders: [{
-            test: /.(png|jpg)$/,
-            include: path.join(__dirname, '/client/src'),
-            loader: 'url-loader?limit=8192',
-            query: {
-                presets: ["react", "es2015"]
-            },
-        }],
-    },
-
+        },]},
+ 
     devtool: "source-map",
     watch: true
 };
