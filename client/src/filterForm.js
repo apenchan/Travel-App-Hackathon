@@ -11,14 +11,12 @@ import React from 'react';
 
 
         filterEvents(e){
-            console.log(this.props.events.address)
             var events  =  this.props.events
             events.forEach(function(event){
-                if(event.address.startsWith(e.target.value.toLowerCase())){
+                if(event.address.toLowerCase().startsWith(e.target.value.toLowerCase())){
                     event.isShown = true
                 } else{
                     event.isShown = false
-                   console.log(event.address)
                 }
             })
             this.props.setEvents(events)
