@@ -136,7 +136,14 @@
     margin : 5px;
 }
 
-<<<<<<< HEAD
->>>>>>> 41fcc5bdd410ac7ff0466ae888fb977388039bdc
-=======
->>>>>>> 22457618518e9c2dec197c46acbb53244b193bc3
+#search-filter {
+    width: 60%;
+    height: 50px;
+    padding: 10px;
+    border: 3px solid rgb(112, 107, 107);
+    text-align: center;
+    margin-left: 233px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

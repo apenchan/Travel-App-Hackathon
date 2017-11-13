@@ -28,7 +28,7 @@ import React from 'react';
 
      render(){
          return(
-             <input onChange={this.filterEvents}/>
+            <input id="search-filter" placeholder="Search by name" onChange={this.filterEvents}  />
          )
      }
     
