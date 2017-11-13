@@ -4,7 +4,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import MapContainer from './googleMap';
-import Routes from './routes'
+import Routes from './Routes'
 
 class DetailsEvent extends React.Component {
 

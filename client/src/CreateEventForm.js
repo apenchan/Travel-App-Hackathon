@@ -72,11 +72,8 @@ class CreateEventForm extends React.Component {
       .then(function (latLng) {
         let lat = latLng.lat
         let lng = latLng.lng
-        console.log(lat + ':' + lng)
         that.setState({ lat: latLng.lat, lng: latLng.lng })
-        console.log(that.state)
-
-
+  
         axios.post("/event", {
           description: that.state.description,
           // startTime: that.state.startTime,
@@ -107,10 +104,8 @@ class CreateEventForm extends React.Component {
               address: '',
               lat: 0,
               lng: 0,
-              isShow : true
+              isShown : true
             })
-
-
           }).catch(function (error) {
             console.log(error);
           });

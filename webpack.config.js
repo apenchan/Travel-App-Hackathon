@@ -18,6 +18,17 @@ module.exports = {
     // },
     module: {
         loaders: [{
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              'file-loader',
+              {
+                loader: 'image-webpack-loader',
+                options: {
+                  bypassOnDebug: true,
+                },
+              },
+            ],
+          },{
             test: /\.js?$/,
             include: path.join(__dirname, '/client/src'),
             loader: 'babel-loader',
@@ -25,9 +36,14 @@ module.exports = {
                 presets: ["react", "es2015"]
             },
 
+<<<<<<< HEAD
         }
         ],
     },
+=======
+        },]},
+ 
+>>>>>>> e69156bd72e2317e9eea78e34a47664b73c295e4
     devtool: "source-map",
     watch: true
 };
