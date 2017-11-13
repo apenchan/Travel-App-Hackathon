@@ -17,7 +17,7 @@ class DetailsEvent extends React.Component {
             eventEndDate: null,
             eventEndTime: null,
         }
-        this.addAtendee = this.addAtendee.bind(this);
+        
     }
 
     componentWillMount() {
