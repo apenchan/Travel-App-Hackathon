@@ -19,7 +19,7 @@ import React from 'react';
                     event.isShown = false
                 }
             })
-            this.setState()
+            this.props.setEvents(events)
         }
     
     

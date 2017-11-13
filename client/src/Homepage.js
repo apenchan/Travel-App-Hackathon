@@ -30,7 +30,6 @@ class Homepage extends React.Component {
 
   createEvent(event) {
     this.setState({ events: this.state.events.concat(event) })
-    console.log(this.state)
   }
 
 
@@ -43,7 +42,7 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div className="main-container">
+      <div id="homepage" className="main-container">
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>

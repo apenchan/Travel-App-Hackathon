@@ -21,8 +21,16 @@ var eventsSchema = new mongoose.Schema({
     // })
     
 
-    var Events = mongoose.model('events', eventsSchema)
+
+// var userSchema = new mongoose.Schema({
+//     userName : String,
+//     password : String,
+//     events : [eventsSchema]
+// })
+
+
+var Events = mongoose.model('events', eventsSchema)
     // var Users = mongoose.model('users', userSchema)
-     
-    module.exports.Events = Events;
-    // module.exports.Users = Users;
+
+module.exports.Events = Events;
+// module.exports.Users = Users;
