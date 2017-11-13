@@ -7,7 +7,8 @@ var UserSchema = new mongoose.Schema({
   username: String,
   password: String,
   savedEvents: [String],
-  createdEvents: [String]
+  createdEvents: [String],
+  
 });
 
 var User = mongoose.model("User", UserSchema);

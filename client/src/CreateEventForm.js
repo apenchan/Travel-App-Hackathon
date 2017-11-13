@@ -21,7 +21,8 @@ class CreateEventForm extends React.Component {
       startDate: moment(),
       address: '',
       lat: 0,
-      lng: 0
+      lng: 0,
+      isShown : true
     }
     this.onChange = (address) => this.setState({ address })
 
@@ -75,6 +76,7 @@ class CreateEventForm extends React.Component {
         that.setState({ lat: latLng.lat, lng: latLng.lng })
         console.log(that.state)
 
+
         axios.post("/event", {
           description: that.state.description,
           // startTime: that.state.startTime,
@@ -88,6 +90,7 @@ class CreateEventForm extends React.Component {
           address: that.state.address,
           lat: that.state.lat,
           lng: that.state.lng,
+          isShown : true
         })
           .then((response) => {
             that.props.createEvent(response.data);
@@ -104,12 +107,14 @@ class CreateEventForm extends React.Component {
               address: '',
               lat: 0,
               lng: 0
+              isShow : true
             })
 
 
           }).catch(function (error) {
             console.log(error);
           });
+
       })
       .catch(error => console.error('Error', error))
 

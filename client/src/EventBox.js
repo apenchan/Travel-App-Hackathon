@@ -18,9 +18,9 @@ class EventBox extends React.Component {
 
 
     render() {
-
+        if(this.props.event.isShown == true){
         return (
-
+          
             <div className="col-md-3">
                 <div>
                     <div className="card">
@@ -40,6 +40,7 @@ class EventBox extends React.Component {
 
                             <div className="details">
                                 <Link to={'/moreDetails/' + this.props.event._id}>More Details</Link>
+                                
                             </div>
 
                         </div>
@@ -49,7 +50,14 @@ class EventBox extends React.Component {
 
             </div>
         );
+    }else{
+        return(
+            <div></div>
+        )
     }
+    }
+    
+    
 }
 
 export default EventBox;

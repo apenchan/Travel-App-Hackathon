@@ -4,6 +4,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import MapContainer from './googleMap';
+import Routes from './routes'
 
 class DetailsEvent extends React.Component {
 
@@ -61,8 +62,8 @@ class DetailsEvent extends React.Component {
 
     render() {
         return (
+            
             <div className="details">
-
                 <img className="card-img-top detail-img" src={this.state.thisEvent.picture} alt="place-img" />
 
                 <div className="card-body-details">
@@ -73,7 +74,7 @@ class DetailsEvent extends React.Component {
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} End time : {this.state.eventEndDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventEndTime}</h4>
                     <h4 className="card-attendees">Max number of people: {this.state.thisEvent.attendees} <button className="btn-join">Join the Event</button></h4>
-
+                
 
 
                 </div>

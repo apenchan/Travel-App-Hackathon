@@ -10,7 +10,7 @@ const Routes = () => (
     <div className="container">
         <Switch>
             <Route name="homepage" exact path='/' component={Homepage} />
-            <Route path="/moreDetails/:eventId" component={DetailsEvent} />
+            <Route exact path="/moreDetails/:eventId" component={DetailsEvent} />
             <Route component={Page404} />
         </Switch>
     </div>
