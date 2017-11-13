@@ -21,7 +21,8 @@ class CreateEventForm extends React.Component {
       startDate: moment(),
       address: 'San Francisco, CA',
       lat: 0,
-      lng: 0
+      lng: 0,
+      isShown : true
     }
     this.onChange = (address) => this.setState({ address })
 
@@ -91,6 +92,7 @@ class CreateEventForm extends React.Component {
       address: that.state.address,
       lat: that.state.lat,
       lng: that.state.lng,
+      isShown : true
     })
       .then((response) => {
         that.props.createEvent(response.data);
@@ -106,7 +108,8 @@ class CreateEventForm extends React.Component {
       startDate: moment(),
       address: 'San Francisco, CA',
       lat: 0,
-      lng: 0
+      lng: 0,
+      isShow : true
     })
     console.log(this.state)
 

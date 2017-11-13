@@ -1,20 +1,25 @@
 var mongoose = require('mongoose')
 
-var eventsSchema = new mongoose.Schema({
-    description: String,
-    startTime: String,
-    endDate: String,
-    city: String,
-    country: String,
-    address: String,
-    lat: Number,
-    lng: Number,
-    attendees: Number,
-    picture: String,
-    startDate: Date,
-    title: String,
-});
- 
+var eventsSchema = new mongoose.Schema({ 
+        description: String, 
+        startTime: String,
+        endTime: String,
+        city: String,
+        country: String,
+        address : String,
+        attendees: Number,
+        picture: String,
+        date : Date,
+        title: String,
+        isShown: Boolean
+    }); 
+     
+    // var userSchema = new mongoose.Schema({
+    //     userName : String,
+    //     password : String,
+    //     events : [eventsSchema]
+    // })
+    
 
 
 // var userSchema = new mongoose.Schema({
