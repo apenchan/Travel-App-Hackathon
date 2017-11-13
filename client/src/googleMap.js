@@ -7,24 +7,12 @@ class MapContainer extends React.Component {
         this.state = {
             showingInfoWindow: false,
             activeMarker: {},
-            // lat: this.props.details.lat,
-            // lng: 0
         }
 
         this.onMarkerClick = this.onMarkerClick.bind(this);
         this.onMapClicked = this.onMapClicked.bind(this);
 
     }
-
-    // componentWillReceiveProps(nextProps) {
-    //     this.setState({
-    //         lat: nextProps.lat,
-    //         lng: nextProps.lng,
-    //     });
-    //     console.log(this.state)
-    //     console.log(nextProps.lat)
-    //     console.log(this.props.lat)
-    // }
 
 
     onMarkerClick(props, marker, e) {
@@ -50,9 +38,9 @@ class MapContainer extends React.Component {
     render() {
         return (
             <Map google={window.google}
-                style={{ width: '70%', height: '70%', position: 'relative' }}
-                defaultZoom={15}
-                defaultCenter={{lat : this.props.details.lat, lng :  this.props.details.lng}}
+                style={{ width: '50%', height: '300px', position: 'relative' }}
+                zoom={15}
+                center={new google.maps.LatLng({lat : this.props.details.lat, lng :  this.props.details.lng})}
                 onClick={this.onMapClicked}>
 
 
