@@ -4,6 +4,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import MapContainer from './googleMap';
+import Routes from './Routes'
 
 class DetailsEvent extends React.Component {
 
@@ -21,7 +22,6 @@ class DetailsEvent extends React.Component {
     componentWillMount() {
         axios.get("/event/" + this.props.match.params.eventId)
             .then((response) => {
-                console.log(response.data);
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]
                 var startMonth = moment(response.data.startDate)._pf.parsedDateParts[2]
                 var obl = moment(response.data.startDate)
@@ -43,7 +43,6 @@ class DetailsEvent extends React.Component {
                 var EndDate = endDay + "/" + endMonth + "/" + endYear
                 var EndTime = (EndHour + 2) + ":" + EndMinute
 
-                console.log(startDate)
                 this.setState({
                     thisEvent: response.data,
                     eventStartDate: startDate,
@@ -52,6 +51,7 @@ class DetailsEvent extends React.Component {
                     eventEndDate: EndDate
                 })
                 console.log(this.state)
+                
             }).catch(function (error) {
                 console.log(error);
             });
@@ -62,24 +62,24 @@ class DetailsEvent extends React.Component {
 
     render() {
         return (
+            
             <div className="details">
-
                 <img className="card-img-top detail-img" src={this.state.thisEvent.picture} alt="place-img" />
 
                 <div className="card-body-details">
                     <h2 className="card-title"> {this.state.thisEvent.title}</h2>
-                    <span className="card-location" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.city}-{this.state.thisEvent.country}</span>
+                    <span className="card-location" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.address}</span>
                     <span className="card-description"> <i className="fa fa-plus" aria-hidden="true"> </i>{this.state.thisEvent.description} </span>
 
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} End time : {this.state.eventEndDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventEndTime}</h4>
                     <h4 className="card-attendees">Max number of people: {this.state.thisEvent.attendees} <button className="btn-join">Join the Event</button></h4>
-
+                
 
 
                 </div>
                 <div className="map">
-                    <MapContainer />
+                    <MapContainer details = {this.state.thisEvent}/>
                 </div>
 
             </div >

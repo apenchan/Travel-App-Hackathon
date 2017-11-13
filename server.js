@@ -1,11 +1,14 @@
 const express = require('express');
 var path = require('path');
-var Events = require('./server/models/models.js').Events
+// var Events = require('./server/models/models.js').Events
+var Events = require('./models/models.js').Events
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // var FontAwesome = require('react-fontawesome');
 const app = express();
+var expressJWT = require('express-jwt');
+var ensureAuthenticated = expressJWT({ secret: process.env.JWT_SECRET });
 var db = mongoose.connect('mongodb://localhost/travelDB', function() {
     console.log('Travel App connection established!!!');
 })
@@ -15,7 +18,6 @@ app.use(bodyParser.json());
 app.use(express.static('node_modules'));
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
-<<<<<<< HEAD
 app.use(cookieParser());
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -31,7 +33,14 @@ app.use(cookieParser());
 // app.use(passport.session());
 
 // Add the auth routing
-app.use("/auth", authRouting);
+// app.use("/auth", authRouting);
+
+
+var authController = require('./controllers/auth.js');
+app.use('/auth', authController);
+
+var usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 // Create authentication middleware
 var ensureAuthenticated = function(req, res, next) {
@@ -42,22 +51,21 @@ var ensureAuthenticated = function(req, res, next) {
   }
 };
 
+app.get("/currentUser", ensureAuthenticated, function(req, res){
+  console.log(req)
+  res.send("yoo")
+})
 
-app.get('/currentuser', ensureAuthenticated, function(req, res) {
-  if (req.user) {
-    res.send(req.user.username)
-  } else {
-    res.send(null)  
-  }
-});
-
-=======
-app.use(express.static('./node_modules/'));
-
+// app.get('/currentuser', ensureAuthenticated, function(req, res) {
+//   if (req.user) {
+//     res.send(req.user.username)
+//   } else {
+//     res.send(null)  
+//   }
+// });
 
 //USER SERVER//
 
->>>>>>> 41fcc5bdd410ac7ff0466ae888fb977388039bdc
 // app.post('/user', function (req, res, next) {
 //   Users.create(req.body,function (err, savedUser) {
 //     if (err) { res.send(err) }
@@ -110,7 +118,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
 
 })
-
 
 // start the server
 app.listen(3000, () => {
