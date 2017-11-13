@@ -20,7 +20,11 @@ class DetailsEvent extends React.Component {
     }
 
     componentWillMount() {
-        axios.get("/event/" + this.props.match.params.eventId)
+        let jwt = sessionStorage.jwt;
+        axios.get("/event" + this.props.match.params.eventId,{
+        headers:{
+            "Authorization": "Bearer " + jwt
+          }})
             .then((response) => {
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]
                 var startMonth = moment(response.data.startDate)._pf.parsedDateParts[2]

@@ -43,13 +43,13 @@ var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
 // Create authentication middleware
-var ensureAuthenticated = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    return res.status('401').send({message: "Unauthorized" });
-  }
-};
+// var ensureAuthenticated = function(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   } else {
+//     return res.status('401').send({message: "Unauthorized" });
+//   }
+// };
 
 app.get("/currentUser", ensureAuthenticated, function(req, res){
   console.log(req)
@@ -105,7 +105,9 @@ app.get('/event', function(req, res, next) {
 
 })
 
-app.get('/event/:id', function(req, res, next) {
+app.get('/event/:id', ensureAuthenticated, function(req, res, next) {
+  console.log|('did we get ensured')
+  console.log('____________________________________________________________________')
     console.log(req.params.id)
     Events.findById(req.params.id, function(err, thisEvent) {
         if (err) { res.send(err) }
