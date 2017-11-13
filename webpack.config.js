@@ -1,31 +1,44 @@
-const path = require('path');// lets define to absolute path
+const path = require('path');
 
 module.exports = {
-  // the entry file for the bundle, Webpack will crawl into all the files connected
-  entry: path.join(__dirname, '/client/src/App.js'),
+    entry: path.join(__dirname, '/client/src/App.js'),
 
-  // the bundle file we will get in the result
-  output: {
-    path: path.join(__dirname, '/client/dist/js'),
-    filename: 'app.js'
-  },
+    output: {
+        path: path.join(__dirname, '/client/dist/js'),
+        filename: 'app.js'
+    },
+    // module: {
+    //     rules: [{
+    //         test: /\.css$/,
+    //         use: [
+    //             'to-string-loader',
+    //             'css-loader'
+    //         ]
+    //     }]
+    // },
+    module: {
+        loaders: [{
+            test: /\.(gif|png|jpe?g|svg)$/i,
+            use: [
+              'file-loader',
+              {
+                loader: 'image-webpack-loader',
+                options: {
+                  bypassOnDebug: true,
+                },
+              },
+            ],
+          },{
+            test: /\.js?$/,
+            include: path.join(__dirname, '/client/src'),
+            loader: 'babel-loader',
+            query: {
+                presets: ["react", "es2015"]
+            },
 
-  module: {
-
-    // apply loaders to files that meet given conditions
-    // were using babel-loader with presets for react and es2015
-    loaders: [
-      {
-        test: /\.js?$/,
-        include: path.join(__dirname, '/client/src'),
-        loader: 'babel-loader',
-        query: {
-          presets: ["react", "es2015"]
-        }
-      }
-    ]
-  },
-  devtool: "source-map",//Lets get a better error handling - we can see all orrors in the termianl
-  // start Webpack in a watch mode, so Webpack will rebuild the bundle on changes
-  watch: true
+        },]},
+ 
+    devtool: "source-map",
+    watch: true
 };
+
