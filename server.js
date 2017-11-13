@@ -1,24 +1,21 @@
 const express = require('express');
 var path = require('path');
-const authRouting = require("./server/routing/authRouting.js");
-// var FacebookStrategy = require('passport-facebook').Strategy;
 var Events = require('./server/models/models.js').Events
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var expressSession = require('express-session');
-var passport = require('passport');
-var expressJWT = require('express-jwt');
-var config = require('./config.js');
+// var FontAwesome = require('react-fontawesome');
 const app = express();
-var db = mongoose.connect('mongodb://localhost/travelDB', function () {
-  console.log('Travel App connection established!!!');
+var db = mongoose.connect('mongodb://localhost/travelDB', function() {
+    console.log('Travel App connection established!!!');
 })
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('node_modules'));
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
+<<<<<<< HEAD
 app.use(cookieParser());
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -54,6 +51,13 @@ app.get('/currentuser', ensureAuthenticated, function(req, res) {
   }
 });
 
+=======
+app.use(express.static('./node_modules/'));
+
+
+//USER SERVER//
+
+>>>>>>> 41fcc5bdd410ac7ff0466ae888fb977388039bdc
 // app.post('/user', function (req, res, next) {
 //   Users.create(req.body,function (err, savedUser) {
 //     if (err) { res.send(err) }
@@ -71,46 +75,44 @@ app.get('/currentuser', ensureAuthenticated, function(req, res) {
 // })
 
 
+
 //EVENT SERVER//
-app.post('/event', function (req, res, next) {
-  console.log(req.body)
-  var events = new Events(req.body);
-  events.save(function (err, savedEvent) {
-      if (err) { res.send(err) }
-      res.send(savedEvent);
-      console.log('the savedEvent was saved')
-  })
+app.post('/event', function(req, res, next) {
+    console.log(req.body)
+    var events = new Events(req.body);
+    events.save(function(err, savedEvent) {
+        if (err) { res.send(err) }
+        res.send(savedEvent);
+        console.log('the savedEvent was saved')
+    })
 })
 
-  // Events.create(req.body,function (err, savedEvent) {
-  //   if (err) { res.send(err) }
-  //   res.send(savedEvent);
-  //   console.log('the event was saved')
-  // })
 
+app.get('/event', function(req, res, next) {
+    Events.find({}, function(err, allEvents) {
+        if (err) { res.send(err) }
+        res.send(allEvents);
+        console.log('get all events')
+    })
 
-app.get('/event', function (req, res, next) {
-  Events.find({},function (err, allEvents) {
-    if (err) { res.send(err) }
-    res.send(allEvents);
-    console.log('get all events')
-  })
 })
 
-app.get('/event/:id', function (req, res, next) {
-  Events.findById(req.params.id,function (err, thisEvent) {
-    if (err) { res.send(err) }
-    res.send(thisEvent);
-    console.log('get this specific event')
-  })
+app.get('/event/:id', function(req, res, next) {
+    console.log(req.params.id)
+    Events.findById(req.params.id, function(err, thisEvent) {
+        if (err) { res.send(err) }
+        res.send(thisEvent);
+        console.log('get this specific event')
+    })
 })
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './server/static/index.html'))
+
 })
 
 
 // start the server
 app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
+    console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
 });

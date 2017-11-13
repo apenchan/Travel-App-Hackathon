@@ -1,7 +1,7 @@
 import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
-// import AuthSuccess from './AuthSuccess'
+import axios from 'axios'
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -9,20 +9,24 @@ class Homepage extends React.Component {
     this.state = { events: [] };
     this.createEvent = this.createEvent.bind(this);
   }
-  createEvent(event) {
-    var event = {
-      title : event.title,
-      description: event.description,
-      startTime: event.startTime,
-      endTime: event.endTime,
-      city: event.city,
-      country : event.country,
-      // attendees:attendees,
-      picture: event.picture,
-      date:event.date
-    }
-    this.setState({ events: this.state.events.concat(event) })
+
+
+  componentWillMount() {
     console.log(this.state)
+    let currentComponent = this;
+    axios.get("/event")
+        .then(function (response) {
+            console.log(response.data);
+            currentComponent.setState({ events: response.data })
+            console.log(currentComponent.state)
+        }).catch(function (error) {
+            console.log(error);
+        });
+}
+
+
+  createEvent(event) {
+    this.setState({ events: this.state.events.concat(event) })
   }
 
 
@@ -30,12 +34,13 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div className="main-container">
+
+      <div id="homepage" className="main-container">
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
         <div className="EventsListBox">
-        <EventsListBox event={this.state.events}/>
+        <EventsListBox events={this.state.events}/>
         </div>
       </div>
     );
