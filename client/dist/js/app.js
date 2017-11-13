@@ -18235,6 +18235,7 @@ var DetailsEvent = function (_React$Component) {
             eventEndDate: null,
             eventEndTime: null
         };
+        _this.addAtendee = _this.addAtendee.bind(_this);
         return _this;
     }
 
