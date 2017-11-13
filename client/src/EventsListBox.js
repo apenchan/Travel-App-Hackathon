@@ -1,12 +1,11 @@
 import React from 'react'; 
 import EventBox from './EventBox';
 
-class EventsListBox extends React.Component {
 
 class EventsListBox extends React.Component {
-    constructor(props){
-    super(props)
-    }
+    
+    
+    
     mapTheEvents() {
         return this.props.events.map((event, index) => <EventBox key={index} index={index} event={event}></EventBox>
 
@@ -20,8 +19,8 @@ class EventsListBox extends React.Component {
             </div>
         );
     }
-
 }
+
 
 
 export default EventsListBox;

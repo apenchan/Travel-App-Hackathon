@@ -10,7 +10,8 @@ var eventsSchema = new mongoose.Schema({
         attendees: Number,
         picture: String,
         date : Date,
-        title: String
+        title: String,
+        isShown: Boolean
     }); 
      
     // var userSchema = new mongoose.Schema({

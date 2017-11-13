@@ -17,7 +17,8 @@ class CreateEventForm extends React.Component {
       address : "",
       attendees: 0,
       picture: "",
-      date: moment()
+      date: moment(),
+      isShwon : true
     }
 
   
@@ -60,7 +61,8 @@ class CreateEventForm extends React.Component {
       attendees: this.state.attendees,
       picture: this.state.picture,
       date: this.state.date._d,
-      title: this.state.title
+      title: this.state.title,
+      isShown : true
     })
       .then((response) => {
         console.log(response.data);
@@ -81,7 +83,8 @@ class CreateEventForm extends React.Component {
       country: "",
       attendees: 0,
       picture: "",
-      date: moment()
+      date: moment(),
+      isShown : true
     })
   }
 

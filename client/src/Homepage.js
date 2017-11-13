@@ -2,7 +2,7 @@ import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
 import axios from 'axios'
-import FilterEvent from './filterForm'
+import FilterForm from './FilterForm.js'
 
 
 class Homepage extends React.Component {
@@ -10,6 +10,7 @@ class Homepage extends React.Component {
     super(props);
     this.state = { events: [] };
     this.createEvent = this.createEvent.bind(this);
+    this.setEvents = this.setEvents.bind(this);
   }
 
 
@@ -34,6 +35,11 @@ class Homepage extends React.Component {
 
 
 
+  setEvents(events){    
+    this.setState({ events:events});
+  }
+ 
+
 
   render() {
     return (
@@ -42,12 +48,14 @@ class Homepage extends React.Component {
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
         <div className="EventsListBox">      
-        <EventsListBox mapEvents={this.state.events}/>
-        <FilterEvent/>
+        <EventsListBox events={this.state.events}/>
+        
         </div>
+        <FilterForm setEvents={this.setEvents} events={this.state.events} />
       </div>
     );
   }
 }
+
 
 export default Homepage;

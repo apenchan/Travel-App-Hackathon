@@ -1,22 +1,38 @@
-import React from 'react'
+import React from 'react';
 
 
-class FilterEvent extends React.Component{
+    class FilterForm extends React.Component {
+        constructor(props) {
+         super(props);
+         this.filterEvents = this.filterEvents.bind(this)
+         
+        }
+         
+
+
+        filterEvents(e){
+            var events  =  this.props.events
+            events.forEach(function(event){
+                if(event.city.startsWith(e.target.value.toLowerCase())){
+                    event.isShown = true
+                } else{
+                    event.isShown = false
+                }
+            })
+            this.setState()
+        }
+    
+    
+        
+
+     render(){
+         return(
+             <input onChange={this.filterEvents}/>
+         )
+     }
+    
+}
+    
   
-    filterTheEvents(){          
-      var list = this.props.events
-    return list.filter(function(){
-          list.toLowerCase().search(
-        event.target.value.toLowerCase()) !== -1;
-    });
-    }
-   
-    render(){
-      return(
-          <input type='text' onChange={this.filterTheEvents}/>
-       )
-      }
+export default FilterForm
 
-  }
-
-  export default FilterEvent
