@@ -141,7 +141,7 @@ class CreateEventForm extends React.Component {
             <input className="input" type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} /> */}
             <input className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
             <button className="submit-event input" type="submit">Add Event</button>
-            <PlacesAutocomplete className="input" id='address' onChange={this.handleChange} inputProps={inputProps} />
+            <PlacesAutocomplete className="input" id='address' onChange={this.handleChange} inputProps={inputProps} /> 
 
           </div>
         </form>

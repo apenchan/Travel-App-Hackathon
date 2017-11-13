@@ -20,6 +20,7 @@ class DetailsEvent extends React.Component {
     }
 
     componentWillMount() {
+        window.scrollTo(0, 0)
         axios.get("/event/" + this.props.match.params.eventId)
             .then((response) => {
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]

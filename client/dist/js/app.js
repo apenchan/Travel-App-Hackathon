@@ -38021,6 +38021,7 @@ var DetailsEvent = function (_React$Component) {
         value: function componentWillMount() {
             var _this2 = this;
 
+            window.scrollTo(0, 0);
             _axios2.default.get("/event/" + this.props.match.params.eventId).then(function (response) {
                 var startYear = (0, _moment2.default)(response.data.startDate)._pf.parsedDateParts[0];
                 var startMonth = (0, _moment2.default)(response.data.startDate)._pf.parsedDateParts[2];
@@ -50388,7 +50389,7 @@ var Homepage = function (_React$Component) {
   _createClass(Homepage, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-
+      window.scrollTo(0, 0);
       var currentComponent = this;
       _axios2.default.get("/event").then(function (response) {
         console.log(response.data);
@@ -50419,12 +50420,8 @@ var Homepage = function (_React$Component) {
           { className: 'create-event-form' },
           _react2.default.createElement(_CreateEventForm2.default, { createEvent: this.createEvent })
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'EventsListBox' },
-          _react2.default.createElement(_EventsListBox2.default, { events: this.state.events })
-        ),
-        _react2.default.createElement(_FilterForm2.default, { setEvents: this.setEvents, events: this.state.events })
+        _react2.default.createElement(_FilterForm2.default, { setEvents: this.setEvents, events: this.state.events }),
+        _react2.default.createElement(_EventsListBox2.default, { events: this.state.events })
       );
     }
   }]);
@@ -73070,7 +73067,7 @@ var FilterForm = function (_React$Component) {
     }
 
     _createClass(FilterForm, [{
-        key: 'filterEvents',
+        key: "filterEvents",
         value: function filterEvents(e) {
             var events = this.props.events;
             events.forEach(function (event) {
@@ -73083,9 +73080,9 @@ var FilterForm = function (_React$Component) {
             this.props.setEvents(events);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
-            return _react2.default.createElement('input', { onChange: this.filterEvents });
+            return _react2.default.createElement("input", { id: "search-filter", placeholder: "Search by name", onChange: this.filterEvents });
         }
     }]);
 
