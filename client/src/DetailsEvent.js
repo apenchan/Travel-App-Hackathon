@@ -25,6 +25,7 @@ class DetailsEvent extends React.Component {
         headers:{
             "Authorization": "Bearer " + jwt
           }})
+
             .then((response) => {
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]
                 var startMonth = moment(response.data.startDate)._pf.parsedDateParts[2]

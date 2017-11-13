@@ -41,8 +41,6 @@ class CreateEventForm extends React.Component {
     this.handleSubmit = this
       .handleSubmit
       .bind(this);
-
-
   }
 
 
@@ -59,6 +57,7 @@ class CreateEventForm extends React.Component {
   handleEndDateChange(date) {
     this.setState({ endDate: date })
   }
+
 
 
   handleSubmit(e) {
@@ -111,6 +110,7 @@ class CreateEventForm extends React.Component {
       })
       .catch(error => console.error('Error', error))
   }
+
 
 
   render() {

@@ -42,7 +42,6 @@ class Homepage extends React.Component {
 
   render() {
     return (
-
       <div id="homepage" className="main-container">
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>

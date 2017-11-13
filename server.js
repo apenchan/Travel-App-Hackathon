@@ -66,6 +66,7 @@ app.get("/currentUser", ensureAuthenticated, function(req, res){
 
 //USER SERVER//
 
+
 // app.post('/user', function (req, res, next) {
 //   Users.create(req.body,function (err, savedUser) {
 //     if (err) { res.send(err) }
@@ -83,6 +84,15 @@ app.get("/currentUser", ensureAuthenticated, function(req, res){
 // })
 
 
+//USER SERVER//
+
+// app.use(expressSession({
+//   secret: 'yourSecretHere',
+//   resave: false,
+//   saveUninitialized: false
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 //EVENT SERVER//
 app.post('/event', function(req, res, next) {

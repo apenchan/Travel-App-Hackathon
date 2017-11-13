@@ -34,9 +34,7 @@ class EventBox extends React.Component {
 
 
                                 <div className="details">
-                                    
                                     <Link to={'/moreDetails/' + this.props.event._id}>More Details</Link>
-                                
 
                                 </div>
 

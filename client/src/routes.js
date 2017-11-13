@@ -5,6 +5,7 @@ import DetailsEvent from './DetailsEvent';
 import LoginSignUp from './LoginSignUp';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+
 const Routes = () => (
     <div className="container">
         <Switch>
@@ -14,7 +15,9 @@ const Routes = () => (
             {/* <Route exact path="/moreDetails/:eventId" component={DetailsEvent} /> */}
             <Route component={Page404} />
 
+
         </Switch>
     </div>
 )
 export default Routes;
+
