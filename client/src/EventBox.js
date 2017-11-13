@@ -29,7 +29,9 @@ class EventBox extends React.Component {
 
                         <div className="card-body">
                             <h2 className="card-title"> {this.props.event.title}</h2>
-                            <span className="card-location" >{this.props.event.city}-{this.props.event.country}</span> <hr />
+                            <span className="card-location" >{this.props.event.address}</span> <hr /> 
+                            
+                            {/* <span className="card-location" >{this.props.event.city}-{this.props.event.country}</span> <hr /> */}
                             <span className="card-description">{this.props.event.description} </span>
                             {/* <h4 className="card-time"> Start time :{this.state.eventStartDate} {this.state.eventStartTime}</h4>
                             <h4 className="card-time">End time : {this.state.eventEndDate} {this.state.eventEndTime}</h4>
