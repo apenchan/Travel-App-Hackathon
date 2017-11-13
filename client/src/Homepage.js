@@ -15,7 +15,7 @@ class Homepage extends React.Component {
 
 
   componentWillMount() {
-    
+    window.scrollTo(0, 0)
     let currentComponent = this;
     axios.get("/event")
         .then(function (response) {
@@ -45,12 +45,10 @@ class Homepage extends React.Component {
       <div id="homepage" className="main-container">
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
-        </div>
-        <div className="EventsListBox">      
-        <EventsListBox events={this.state.events}/>
-        
-        </div>
+        </div>   
         <FilterForm setEvents={this.setEvents} events={this.state.events} />
+        <EventsListBox events={this.state.events}/>
+      
       </div>
     );
   }
