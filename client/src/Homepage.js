@@ -46,11 +46,11 @@ class Homepage extends React.Component {
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>
-        <div className="EventsListBox">      
+        <div className="EventsListBox">   
+        <FilterForm setEvents={this.setEvents} events={this.state.events} />   
         <EventsListBox events={this.state.events}/>
         
         </div>
-        <FilterForm setEvents={this.setEvents} events={this.state.events} />
       </div>
     );
   }

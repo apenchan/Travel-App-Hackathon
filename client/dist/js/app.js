@@ -51406,9 +51406,9 @@ var Homepage = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'EventsListBox' },
+          _react2.default.createElement(_FilterForm2.default, { setEvents: this.setEvents, events: this.state.events }),
           _react2.default.createElement(_EventsListBox2.default, { events: this.state.events })
-        ),
-        _react2.default.createElement(_FilterForm2.default, { setEvents: this.setEvents, events: this.state.events })
+        )
       );
     }
   }]);
@@ -51596,7 +51596,7 @@ var CreateEventForm = function (_React$Component) {
               { className: 'submit-event input', type: 'submit' },
               'Add Event'
             ),
-            _react2.default.createElement(_reactPlacesAutocomplete2.default, { className: 'input', id: 'address', onChange: this.handleChange, inputProps: inputProps })
+            _react2.default.createElement(_reactPlacesAutocomplete2.default, { placeholder: 'city address', className: 'input', id: 'address', onChange: this.handleChange, inputProps: inputProps })
           )
         )
       );
@@ -78291,7 +78291,7 @@ var FilterForm = function (_React$Component) {
     }
 
     _createClass(FilterForm, [{
-        key: 'filterEvents',
+        key: "filterEvents",
         value: function filterEvents(e) {
             console.log(this.props.events.address);
             var events = this.props.events;
@@ -78306,9 +78306,9 @@ var FilterForm = function (_React$Component) {
             this.props.setEvents(events);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
-            return _react2.default.createElement('input', { onChange: this.filterEvents });
+            return _react2.default.createElement("input", { id: "search-filter", placeholder: "Search by name", onChange: this.filterEvents });
         }
     }]);
 

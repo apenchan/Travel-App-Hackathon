@@ -136,3 +136,7 @@
     margin : 5px;
 }
 
+#search-filter{
+    width : 100%;
+    border : 3px solid rgb(112, 107, 107);
+}
