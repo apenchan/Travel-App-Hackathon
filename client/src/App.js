@@ -8,8 +8,7 @@ class AppWrapper extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-         {/* <Header/>  */}
+        <div> 
           <div className="container">
             <Routes/>
           </div>
@@ -22,3 +21,4 @@ class AppWrapper extends React.Component {
 
 ReactDom.render(
   <AppWrapper/>, document.getElementById('react-app'));
+ 

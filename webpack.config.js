@@ -25,19 +25,9 @@ module.exports = {
                 presets: ["react", "es2015"]
             },
 
-        }],
+        }
+        ],
     },
-    module: {
-        loaders: [{
-            test: /.(png|jpg)$/,
-            include: path.join(__dirname, '/client/src'),
-            loader: 'url-loader?limit=8192',
-            query: {
-                presets: ["react", "es2015"]
-            },
-        }],
-    },
-
     devtool: "source-map",
     watch: true
 };
