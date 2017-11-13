@@ -15,7 +15,7 @@ class Homepage extends React.Component {
 
 
   componentWillMount() {
-    console.log(this.state)
+    
     let currentComponent = this;
     axios.get("/event")
         .then(function (response) {

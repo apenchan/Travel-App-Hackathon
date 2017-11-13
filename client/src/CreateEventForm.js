@@ -12,14 +12,14 @@ class CreateEventForm extends React.Component {
     this.state = {
       title: "",
       description: "",
-      startTime: "",
+      // startTime: "",
       endDate: moment(),
-      city: "",
-      country: "",
+      // city: "",
+      // country: "",
       attendees: 0,
       picture: "",
       startDate: moment(),
-      address: 'San Francisco, CA',
+      address: '',
       lat: 0,
       lng: 0,
       isShown : true
@@ -42,16 +42,14 @@ class CreateEventForm extends React.Component {
       .handleSubmit
       .bind(this);
 
-  
+
   }
 
-  
+
   handleChange(e) {
-    console.log(e.target.id)
     this.setState({
       [e.target.id]: e.target.value
     })
-    console.log(this.state)
   }
 
   handleStartDateChange(date) {
@@ -71,54 +69,55 @@ class CreateEventForm extends React.Component {
 
     geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
-      .then(function(latLng){
+      .then(function (latLng) {
         let lat = latLng.lat
         let lng = latLng.lng
-        console.log(lat +':'+ lng)
+        console.log(lat + ':' + lng)
         that.setState({ lat: latLng.lat, lng: latLng.lng })
-        debugger
         console.log(that.state)
 
-      axios.post("/event", {
-      description: that.state.description,
-      startTime: that.state.startTime,
-      endDate: that.state.endDate._d,
-      startDate: that.state.startDate._d,
-      city: that.state.city,
-      country: that.state.country,
-      attendees: that.state.attendees,
-      picture: that.state.picture,
-      title: that.state.title,
-      address: that.state.address,
-      lat: that.state.lat,
-      lng: that.state.lng,
-      isShown : true
-    })
-      .then((response) => {
-        that.props.createEvent(response.data);
-      that.setState({
-      title: "",
-      description: "",
-      startTime: "",
-      endDate: moment(),
-      city: "",
-      country: "",
-      attendees: 0,
-      picture: "",
-      startDate: moment(),
-      address: 'San Francisco, CA',
-      lat: 0,
-      lng: 0,
-      isShow : true
-    })
-    console.log(this.state)
 
-      }).catch(function (error) {
-        console.log(error);
-      });
+        axios.post("/event", {
+          description: that.state.description,
+          // startTime: that.state.startTime,
+          endDate: that.state.endDate._d,
+          startDate: that.state.startDate._d,
+          // city: that.state.city,
+          // country: that.state.country,
+          attendees: that.state.attendees,
+          picture: that.state.picture,
+          title: that.state.title,
+          address: that.state.address,
+          lat: that.state.lat,
+          lng: that.state.lng,
+          isShown : true
+        })
+          .then((response) => {
+            that.props.createEvent(response.data);
+            that.setState({
+              title: "",
+              description: "",
+              // startTime: "",
+              endDate: moment(),
+              // city: "",
+              // country: "",
+              attendees: 0,
+              picture: "",
+              startDate: moment(),
+              address: '',
+              lat: 0,
+              lng: 0,
+              isShow : true
+            })
+
+
+          }).catch(function (error) {
+            console.log(error);
+          });
+
       })
       .catch(error => console.error('Error', error))
-      
+
 
 
 
@@ -127,7 +126,8 @@ class CreateEventForm extends React.Component {
   render() {
     const inputProps = {
       value: this.state.address,
-      onChange: this.onChange,}
+      onChange: this.onChange,
+    }
 
     return (
 
@@ -142,11 +142,11 @@ class CreateEventForm extends React.Component {
 
             <input className="input" type="text" id="title" required="true" value={this.state.title} placeholder="Event Name" onChange={this.handleChange} />
             <input className="input" type="text" id="description" required="true" value={this.state.description} placeholder="Event Description" onChange={this.handleChange} />
-            <input className="input" type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
-            <input className="input" type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} />
-            <input  className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
+            {/* <input className="input" type="text" id="city" required="true" value={this.state.city} placeholder="Enter a City" onChange={this.handleChange} />
+            <input className="input" type="text" id="country" required="true" value={this.state.country} placeholder="Event Country" onChange={this.handleChange} /> */}
+            <input className="input-pic input" type="text" id="picture" required="true" value={this.state.picture} placeholder="Add a Photo" onChange={this.handleChange} />
             <button className="submit-event input" type="submit">Add Event</button>
-            <PlacesAutocomplete id='address' onChange={this.handleChange} inputProps={inputProps} />
+            <PlacesAutocomplete className="input" id='address' onChange={this.handleChange} inputProps={inputProps} />
 
           </div>
         </form>

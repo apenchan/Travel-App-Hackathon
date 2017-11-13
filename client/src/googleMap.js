@@ -7,13 +7,13 @@ class MapContainer extends React.Component {
         this.state = {
             showingInfoWindow: false,
             activeMarker: {},
-            selectedPlace: { name: "10 rue de Valmy" },
         }
 
-        // binding this to event-handler functions
         this.onMarkerClick = this.onMarkerClick.bind(this);
         this.onMapClicked = this.onMapClicked.bind(this);
+
     }
+
 
     onMarkerClick(props, marker, e) {
         this.setState({
@@ -21,7 +21,7 @@ class MapContainer extends React.Component {
             activeMarker: marker,
             showingInfoWindow: true
         });
-        console.log(this.state.selectedPlace)
+
     }
 
     onMapClicked(props) {
@@ -38,26 +38,28 @@ class MapContainer extends React.Component {
     render() {
         return (
             <Map google={window.google}
-                style={{ width: '50%', height: '70%', position: 'relative' }}
+                style={{ width: '50%', height: '300px', position: 'relative' }}
+                zoom={15}
+                center={new google.maps.LatLng({lat : this.props.details.lat, lng :  this.props.details.lng})}
                 onClick={this.onMapClicked}>
 
+
                 <Marker onClick={this.onMarkerClick}
-                    name={'Event location'}
-                    position={{ lat: 48.85661400000001, lng: 2.3522219000000177 }} />
+                    name={this.props.details.address}
+                    position={{ lat: this.props.details.lat, lng: this.props.details.lng }} />
 
                 <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}>
-                <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
-                </div>
-            </InfoWindow>
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}>
+                    <div>
+                        <h1>{this.props.details.address}</h1>
+                    </div>
+                </InfoWindow>
             </Map>
         )
     }
 };
 
 
-export default GoogleApiWrapper({
-    apiKey: "AIzaSyD88syDFjaL4y4-_d-a51I0aCvxyeVyyeU"
-})(MapContainer)
+
+export default MapContainer

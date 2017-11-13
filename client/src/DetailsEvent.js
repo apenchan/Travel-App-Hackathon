@@ -23,7 +23,6 @@ class DetailsEvent extends React.Component {
     componentWillMount() {
         axios.get("/event/" + this.props.match.params.eventId)
             .then((response) => {
-                console.log(response.data);
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]
                 var startMonth = moment(response.data.startDate)._pf.parsedDateParts[2]
                 var obl = moment(response.data.startDate)
@@ -45,7 +44,6 @@ class DetailsEvent extends React.Component {
                 var EndDate = endDay + "/" + endMonth + "/" + endYear
                 var EndTime = (EndHour + 2) + ":" + EndMinute
 
-                console.log(startDate)
                 this.setState({
                     thisEvent: response.data,
                     eventStartDate: startDate,
@@ -54,6 +52,7 @@ class DetailsEvent extends React.Component {
                     eventEndDate: EndDate
                 })
                 console.log(this.state)
+                
             }).catch(function (error) {
                 console.log(error);
             });
@@ -69,7 +68,7 @@ class DetailsEvent extends React.Component {
 
                 <div className="card-body-details">
                     <h2 className="card-title"> {this.state.thisEvent.title}</h2>
-                    <span className="card-location" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.city}-{this.state.thisEvent.country}</span>
+                    <span className="card-location" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.address}</span>
                     <span className="card-description"> <i className="fa fa-plus" aria-hidden="true"> </i>{this.state.thisEvent.description} </span>
 
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
@@ -80,7 +79,7 @@ class DetailsEvent extends React.Component {
 
                 </div>
                 <div className="map">
-                    <MapContainer />
+                    <MapContainer details = {this.state.thisEvent}/>
                 </div>
 
             </div >
