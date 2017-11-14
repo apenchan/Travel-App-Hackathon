@@ -3,7 +3,7 @@ import Homepage from './';
 import Page404 from './common/404';
 import DetailsEvent from './DetailsEvent';
 import LoginSignUp from './LoginSignUp';
-// import Logout from './Logout';
+import Logout from './Logout';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 
@@ -11,11 +11,10 @@ const Routes = () => (
     <div className="container">
         <Switch>
             <Route name="homepage" exact path='/' component={Homepage} />
-            <Route exact path="/moreDetails/:eventId" component={DetailsEvent} />
+            <Route path="/moreDetails/:eventId" component={DetailsEvent} />
+            <Route name="logout" path='/logout' component={Logout} />
             <Route name="login" component={LoginSignUp} />
-            {/* <Route name="logout" component={Logout} /> */}
-            {/* <Route exact path="/moreDetails/:eventId" component={DetailsEvent} /> */}
-            <Route component={Page404} />
+            {/* <Route component={Page404} /> */}
 
 
         </Switch>

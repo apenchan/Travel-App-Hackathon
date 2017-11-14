@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
+import NavBar from './navbar';
 import axios from 'axios'
 import FilterForm from './FilterForm.js'
 import Logout from './Logout';
@@ -44,7 +45,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div id="homepage" className="main-container">
-        <Logout/>
+        <NavBar/>
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>   

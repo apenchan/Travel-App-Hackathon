@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import Homepage from './Homepage'
-// import TestSignup from './TestSignup'
 import Login from './Login'
 import {Switch, Route, Router, Redirect, browserHistory, history} from 'react-router-dom';
 
