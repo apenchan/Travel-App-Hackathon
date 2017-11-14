@@ -77,7 +77,8 @@ class CreateEventForm extends React.Component {
         };
 
         axios
-          .get(`https://api.gettyimages.com/v3/search/images/creative?minimum_size=xx_large&phrase=${that.state.PicUrl}&page=1&page_size=6&sort_order=most_popular`, config)
+          .get(`https://api.gettyimages.com/v3/search/images/creative?embed_content_only=true&fields=comp%2Curi_oembed&minimum_size=large&phrase=${that.state.PicUrl}&page=1&page_size=6&sort_order=most_popular`, config)
+
           .then((response) => {
             console.log(response.data)
             that.setState({PicUrl: ''})
