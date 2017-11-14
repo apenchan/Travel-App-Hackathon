@@ -20,7 +20,7 @@ class EventBox extends React.Component {
                     <div>
                         <div className="card">
 
-                            <img className="card-img-top" src={this.props.event.picture} alt="place-img" />
+                            <img className="card-img-top" src={this.props.event.PicUrl} alt="place-img" />
 
                             <div className="card-body">
                                 <h2 className="card-title"> {this.props.event.title}</h2>

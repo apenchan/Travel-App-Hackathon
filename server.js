@@ -3,6 +3,7 @@ var path = require('path');
 var Events = require('./server/models/models.js').Events
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+
 // var FontAwesome = require('react-fontawesome');
 const app = express();
 var db = mongoose.connect('mongodb://localhost/travelDB', function() {

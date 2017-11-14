@@ -64,7 +64,7 @@ class DetailsEvent extends React.Component {
         return (
             
             <div className="details">
-                <img className="card-img-top detail-img" src={this.state.thisEvent.picture} alt="place-img" />
+                <img className="card-img-top detail-img" src={this.state.thisEvent.PicUrl} alt="place-img" />
 
                 <div className="card-body-details">
                     <h2 className="card-title"> {this.state.thisEvent.title}</h2>
