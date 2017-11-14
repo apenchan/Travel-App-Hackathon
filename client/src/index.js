@@ -6,6 +6,12 @@ import Login from './Login'
 import {Switch, Route, Router, Redirect, browserHistory, history} from 'react-router-dom';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      username: ""
+    }
+  }
   componentWillMount(){
     // if we dont have jwt at all no need to check in the server - redirect to login
     let jwt = sessionStorage.jwt;
@@ -20,6 +26,9 @@ class App extends React.Component {
       }}
     ).then(function(response){
       console.log(response);
+      console.log(response.username)
+      this.setState({username: data.username})
+      console.log(this.state.username)
     })
 
   }
