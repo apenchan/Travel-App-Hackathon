@@ -17,6 +17,7 @@ import React from 'react';
                     event.isShown = true
                 } else{
                     event.isShown = false
+
                 }
             })
             this.props.setEvents(events)
