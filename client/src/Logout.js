@@ -1,5 +1,5 @@
 import React from 'react';
-
+import LoginSignUp from './LoginSignUp';
 class Logout extends React.Component{
   constructor(props){
     super (props);
@@ -7,19 +7,22 @@ class Logout extends React.Component{
       loggedIn: true
     }
     this.handleLogoutFormChange = this.handleLogoutFormChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
   handleLogoutFormChange(e){
-    e.preventDefault()
+    // e.preventDefault()
     sessionStorage.clear();
     this.setState={
       loggedIn: false
     };
   }
+
   render(){
     return(
       <div className="logout-btn">
-        <button onClick={this.handleLogoutFormChange}>logout</button>
+        {this.handleLogoutFormChange()}
+        <LoginSignUp/>
       </div>
     )
   }

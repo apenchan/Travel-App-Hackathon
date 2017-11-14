@@ -23,6 +23,7 @@ router.use(passport.authenticate('jwt', { session: false }));
 router.get('/profile', function(req, res, next){
 	User.findById(req.user.id).then(function(user){
 		res.send(user);
+		
 	}); 
 });
 

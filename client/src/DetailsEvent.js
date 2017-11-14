@@ -3,6 +3,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import MapContainer from './googleMap';
+import NavBar from './navbar';
 import Routes from './Routes'
 class DetailsEvent extends React.Component {
     constructor(props) {
@@ -21,7 +22,6 @@ class DetailsEvent extends React.Component {
         axios({
             method: "GET",
             url: "/event/" + this.props.match.params.eventId,
-            // data: response,
             headers:{ "Authorization": "Bearer " + jwt,
         }
           })
@@ -60,6 +60,7 @@ class DetailsEvent extends React.Component {
         return (
             
             <div className="details">
+                <NavBar/>
                 <img className="card-img-top detail-img" src={this.state.thisEvent.picture} alt="place-img" />
                 <div className="card-body-details">
                     <h2 className="card-title"> {this.state.thisEvent.title}</h2>

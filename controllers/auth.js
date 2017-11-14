@@ -27,10 +27,13 @@ router.post('/login', passport.authenticate('local', { session: false }), functi
 	console.log('••••••••••••••••••••••');
 
   // Maybe don't sign with entire user
-	var token = jwt.sign({user: req.user.username}, process.env.JWT_SECRET, {expiresIn: '20h'});
+	var token = jwt.sign({user: req.user.username}, process.env.JWT_SECRET ||"1234", {expiresIn: '20h'});
 
+	var user = req.user.username
 	console.log(token);
+	console.log('this is the user :' + user)
 	res.json({ token: token });
+
 
 });
 
