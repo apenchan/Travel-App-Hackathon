@@ -22,9 +22,10 @@ class DetailsEvent extends React.Component {
         axios({
             method: "GET",
             url: "/event/" + this.props.match.params.eventId,
-            headers:{ "Authorization": "Bearer " + jwt,
-        }
-          })
+            headers: {
+                "Authorization": "Bearer " + jwt,
+            }
+        })
             .then((response) => {
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]
                 var startMonth = moment(response.data.startDate)._pf.parsedDateParts[2]
@@ -51,32 +52,41 @@ class DetailsEvent extends React.Component {
                     eventEndDate: EndDate
                 })
                 console.log(this.state)
-                
+
             }).catch(function (error) {
                 console.log(error);
             });
     }
     render() {
         return (
-            
-            <div className="details">
-                <NavBar/>
-                <img className="card-img-top detail-img" src={this.state.thisEvent.picture} alt="place-img" />
-                
-                <div className="card-body-details">
-                    <h2 className="card-title"> {this.state.thisEvent.title}</h2>
-                    <span className="card-location" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.address}</span>
-                    <span className="card-description"> <i className="fa fa-plus" aria-hidden="true"> </i>{this.state.thisEvent.description} </span>
-                    <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
-                    <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} End time : {this.state.eventEndDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventEndTime}</h4>
-                    <h4 className="card-attendees">Max number of people: {this.state.thisEvent.attendees} <button className="btn-join">Join the Event</button></h4>
-                </div>
+            <div className="wrapper">
+                <NavBar />
+                <div className="detail-wrapper">
+                    <div className="wrapper-img">
+                        <img className="card-img-top detail-img" src={this.state.thisEvent.PicUrl} alt="place-img" />
+                    </div>
+                    <div className="details">
+                        <div className="card-body-details">
+                            <h2 className="card-title"> {this.state.thisEvent.title}</h2>
+                            <span className="card-location content" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.address}</span><br />
+                            <span className="card-description content"> <i className="fa fa-plus" aria-hidden="true"> </i>{this.state.thisEvent.description} </span>
+                            <br /><h4 className="card-time content"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
+                            <h4 className="card-time content"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} End time : {this.state.eventEndDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventEndTime}</h4>
+                            {/* <h4 className="card-attendees content">Max number of people: {this.state.thisEvent.attendees}</h4>  */}<br />
+                            <button className="btn-join">Join the Event</button>
+                        </div>
 
-                <div className="map">
-                    <MapContainer details = {this.state.thisEvent}/>
+                        {/* <div className="map-details"> */}
+                            <div className="map">
+                                <MapContainer details={this.state.thisEvent} />
+                            </div>
+                        {/* </div> */}
+
+                    </div>
                 </div>
             </div>
         )
     }
 }
 export default DetailsEvent;
+

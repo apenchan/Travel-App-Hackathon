@@ -1,8 +1,11 @@
- *{box-sizing: border-box;}
-    /* font-family: 'Pacifico', cursive;
+ * {
+     box-sizing: border-box;
+ }
+ /* font-family: 'Pacifico', cursive;
     font-family: 'Courgette', cursive;
     font-family: 'Lobster Two', cursive;  */
     /* font-family: 'Playfair Display', serif; */
+
 
 @font-face{
     font-family: "GeosansLight.ttf";
@@ -14,20 +17,27 @@
     src: url(../fonts/TravelGoals.ttf);
 }
 
-.main-container{
+
+
+.container{
     padding: 0;
     margin: 0;
     height: 100vh;
 }
 
-.container-test{
-    padding: 0;
-    margin: 0;
-}
+
 /* LOGIN PAGE */
 
 .main-login-container{
     padding: 20px;
+
+.row{
+    overflow: hidden;
+    padding : 0 30px;
+
+}
+LOGIN PAGE
+.signup-login-wrapper{
     height: 100vh;
     background: url("http://bit.ly/2zFmeyF");
     background-attachment: fixed;
@@ -104,13 +114,14 @@ input[type=password], select {
     width: 100%;
     font-size: 17px;
     line-height: 2;
-    padding: 3px;
+    padding: 0 30px;
     top: 0;
     left: 0;
     -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
     box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-    margin-left: 13px;
+    
+    z-index: 1;
 }
 
 .fa-plane {
@@ -148,10 +159,11 @@ input[type=password], select {
 .input {
     padding: 5px;
     text-align: center;
-    margin: 5px;
+    margin: 4px;
     height: 30px;
-    width: 188px;
-    border: 3px solid rgba(85, 85, 85, 0.67);
+    width: 175px;
+    font-size: 12px;
+  
 }
 
 .input-time {
@@ -160,15 +172,27 @@ input[type=password], select {
     width: 100px;
 }
 
+.submit-event{
+    color : #00A2FF;
+    font-size: 12px;
+    padding : 5px;
+    font-weight: bold;
+}
+
+.card-wrapper {
+    padding: 5px;
+    width: 25%;
+    float: left;
+}
+
 .card {
     height: auto;
     overflow: visible;
-    width: 30%;
-    margin: 5px;
+    width: 100%;
+    /* margin: 5px; */
     -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
     box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-    float: left;
     font-size: 13px;
 }
 
@@ -178,15 +202,12 @@ input[type=password], select {
 
 .card-img-top {
     width: 100%;
-    height: 140px;
 }
 
-.card-body-details{
-    position: absolute;
-    top: 0px;
-    right: 195px;
-}
 
+.card-description{
+    margin-bottom : 10px;
+}
 @media (max-width: 750px) {
     .card {
         width: 100%;
@@ -203,44 +224,66 @@ input[type=password], select {
 
 
 
-.details{
-    width: 100%;
-    height: 100%;
-    margin-top: 70px;
-    position: relative;
-    /* padding : 10px */
-    
-   
+
+/* .card-body-details{
+        height: auto;
+        overflow: visible;
+        width: 45%;
+        margin: 5px;
+        -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+        -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+        box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+        float: left;
+} */
+.detail-wrapper{
+    height: auto;
+    overflow: visible;
+    width: 45%;
+    margin-top: 58px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+
 }
 
 .detail-img{
-    width : 40%;
-    height : auto;
-    border : 3px solid black;
-    margin-left: 6px
+    width: 100%;
+    height: 80%;
 }
 
+.details {
+    position: relative;
+}
 
-/* .btn-join{
-    margin-left: 100px;
-    width: 20%;
-    height: 30px;
-    line-height: 2;
-} */
+.btn-join {
+    background-color: white;
+    color: black;
+    border: 2px solid #00A2FF;
+    padding : 10px;
+    text-align : center;
+    border-radius:10px;
+    cursor: pointer;
+
+}
+
 
 #search-filter {
     width: 60%;
     height: 50px;
     padding: 10px;
-    border: 3px solid rgb(112, 107, 107);
+    border: 1px solid rgb(112, 107, 107);
     text-align: center;
     margin-left: 200px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    /* background-image: url('http://files.softicons.com/download/toolbar-icons/mono-general-icons-2-by-custom-icon-design/png/512x512/search.png');
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: right center; */
+    margin-bottom: 16px;
 }
 
 .fa-search{
@@ -256,7 +299,27 @@ input[type=password], select {
         text-align: center;
         height: 49px;
         line-height: 2;
-        
+}
 
 
+ .inlineDiv {
+     display: inline-flex
+ }
+ 
+ #PlacesAutocomplete__root>input {
+    padding: 5px;
+     margin-top: 3%;
+     height: 30px;
+     margin-top: 2.5%;
+     text-align: center;
+ }
+
+.map{
+    
+    height: 235px;
+}
+
+
+.clear {
+    clear: both;
 }
