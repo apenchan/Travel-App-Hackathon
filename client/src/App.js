@@ -10,7 +10,7 @@ class AppWrapper extends React.Component {
       <BrowserRouter>
         <div>
          {/* <Header/>  */}
-          <div className="container">
+          <div className="main-container">
             <Routes/>
           </div>
         </div>

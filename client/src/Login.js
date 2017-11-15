@@ -32,11 +32,8 @@ class Login extends React.Component{
         password: this.props.initialLoginCheck,
         loggedIn: true
       })
-      console.log("work baby work");
-      // sessionStorage.setItem('jwt', "true");
       // this.props.changeLog('jwt', response.data.token)
       console.log('yooooo')
-      console.log(sessionStorage.jwt);
       //later on pass the current user up to the app component
       // console.log("cookie is set");
       // this.saveItem('id_token', responseData.id_token),
@@ -53,11 +50,13 @@ class Login extends React.Component{
 		return(
       <div className="login-form">
       <div className="login-account">
-        <h3> Login Acount </h3>
+        <div className="login-title"> Login</div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" className="form-control login-control" id="username" required="true" value={this.state.username} placeholder="Username" onChange={this.handleLoginFormChange} />
-          <input type="text" className="form-control login-control" id="password" required="true" value={this.state.password} placeholder="Password" onChange={this.handleLoginFormChange} />
-          <button className="submit-event" type="submit">Login</button>
+          <ul className="login-vertical">
+          <li><input type="text" className="form-control login-control" id="username" required="true" value={this.state.username} placeholder="Username" onChange={this.handleLoginFormChange} /></li>
+          <li><input type="password" className="form-control login-control" id="password" required="true" value={this.state.password} placeholder="Password" onChange={this.handleLoginFormChange} /></li>
+          <li><button className="submit-event" type="submit">Login</button></li>
+          </ul>
         </form>
       </div>
     </div>

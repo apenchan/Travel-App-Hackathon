@@ -4,15 +4,97 @@
     font-family: 'Lobster Two', cursive;  */
     /* font-family: 'Playfair Display', serif; */
 
-.container{
+@font-face{
+    font-family: "GeosansLight.ttf";
+    src: url(../fonts/GeosansLight.ttf);
+}
+
+@font-face{
+    font-family: "TravelGoals.ttf";
+    src: url(../fonts/TravelGoals.ttf);
+}
+
+.main-container{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.container-test{
     padding: 0;
     margin: 0;
 }
-LOGIN PAGE
-.signup-login-wrapper{
+/* LOGIN PAGE */
+
+.main-login-container{
+    padding: 20px;
     height: 100vh;
-    width: 1000px;
-    background-color: #6CA6D9
+    background: url("http://bit.ly/2zFmeyF");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* clear: left; */
+}
+.website-title{
+    font-family: "TravelGoals.ttf";
+    font-size: 70px;
+    float: right;
+}
+.login-title{
+    font-family: "GeosansLight.ttf";
+    font-size: 40px;
+    color: white;
+}
+.create-title{
+    font-family: "GeosansLight.ttf";
+    font-size: 40px; 
+    color: white;
+}
+
+input[type=text], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-control{
+   display: inline-block;
+   height: 34px;
+   width: 350px;
+   margin-bottom: 20px;
+   outline: none;
+   border: none;
+   -webkit-box-shadow: 0 0 0px 1000px#FFFFFF inset
+   /* -webkit-box-shadow: 0 0 0px 1000px #C0E7FF inset */
+}
+.login-control:focus{
+    outline:none;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-appearance:none;
+}
+.signup-control{
+    display: inline-block;
+    height: 34px;
+    width: 350px;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    -webkit-box-shadow: 0 0 0px 1000px#FFFFFF inset;
+    /* -webkit-box-shadow: 0 0 0px 1000px #C0E7FF inset */
 }
 
 .nav {

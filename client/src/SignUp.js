@@ -49,13 +49,15 @@ class Signup extends React.Component{
     return (
       <div className="signup-form">
         <div className="create-account">
-          <h3> Create Acount </h3>
+          <div className="create-title"> Create Acount </div>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" id="firstName" required="true" value={this.state.firstName} placeholder="First Name" onChange={this.handleSignUpForm} />
-            <input type="text" id="lastName" required="true" value={this.state.lastName} placeholder="Last Name" onChange={this.handleSignUpForm} />
-            <input type="text" id="username" required="true" value={this.state.username} placeholder="Create Username" onChange={this.handleSignUpForm} />
-            <input type="text" id="password" required="true" value={this.state.password} placeholder="Create Password" onChange={this.handleSignUpForm} />
-            <button className="submit-event" type="submit">Create Acount</button>
+          <ul className="sign-up-vertical">
+            <li><input type="text" className="form-control signup-control" id="firstName" required="true" value={this.state.firstName} placeholder="First Name" onChange={this.handleSignUpForm} /></li>
+            <li><input type="text" className="form-control signup-control" id="lastName" required="true" value={this.state.lastName} placeholder="Last Name" onChange={this.handleSignUpForm} /></li>
+            <li><input type="text" className="form-control signup-control" id="username" required="true" value={this.state.username} placeholder="Create Username" onChange={this.handleSignUpForm} /></li>
+            <li><input type="password" className="form-control signup-control" id="password" required="true" value={this.state.password} placeholder="Create Password" onChange={this.handleSignUpForm} /></li>
+            <li><button className="submit-event" type="submit">Create Acount</button></li>
+            </ul>
           </form>
         </div>
       </div>
