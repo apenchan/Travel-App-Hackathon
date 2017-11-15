@@ -44,7 +44,10 @@ class Signup extends React.Component{
       username: this.props.initialCreate,
       password: this.props.initialCreate
     })
+
   }
+
+  
   render() {
     return (
       <div className="signup-form">
