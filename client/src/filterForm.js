@@ -28,7 +28,10 @@ import React from 'react';
 
      render(){
          return(
-            <input id="search-filter" placeholder="Search by name" onChange={this.filterEvents}  />
+            <div className="search-form">
+            <input id="search-filter" placeholder="Search by city" onChange={this.filterEvents}/>
+            <i className="fa fa-search" aria-hidden="true"></i> 
+            </div>
          )
      }
     
