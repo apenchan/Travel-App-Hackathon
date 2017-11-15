@@ -77,13 +77,13 @@ class CreateEventForm extends React.Component {
         };
 
         axios
-          .get(`https://api.gettyimages.com/v3/search/images/creative?embed_content_only=true&fields=comp%2Curi_oembed&minimum_size=large&phrase=${that.state.PicUrl}&page=1&page_size=6&sort_order=most_popular`, config)
+          .get(`https://api.gettyimages.com/v3/search/images/creative?embed_content_only=true&fields=comp%2Curi_oembed&minimum_size=large&orientations=Square&phrase=${that.state.PicUrl}&page=1&page_size=6&sort_order=most_popular`, config)
 
           .then((response) => {
             console.log(response.data)
             that.setState({PicUrl: ''})
             console.log(that.state.PicUrl)
-            that.setState({PicUrl: response.data.images[0].display_sizes[0].uri})
+            that.setState({PicUrl: response.data.images[Math.floor(Math.random() * 6) + 0].display_sizes[0].uri})
             console.log(that.state.PicUrl)
             axios
               .post("/event", {
@@ -132,7 +132,8 @@ class CreateEventForm extends React.Component {
   render() {
     const inputProps = {
       value: this.state.address,
-      onChange: this.onChange
+      onChange: this.onChange,
+      placeholder : "Location"
     }
 
     return (
@@ -157,7 +158,7 @@ class CreateEventForm extends React.Component {
               <DatePicker
                 className="input"
                 id="endTime"
-                placeholder="End Time"
+                placeholderText="Click to select a date"
                 selected={this.state.endDate}
                 onChange={this.handleEndDateChange}
                 showTimeSelect
@@ -194,7 +195,7 @@ class CreateEventForm extends React.Component {
               id="PicUrl"
               required="true"
               value={this.state.PicUrl}
-              placeholder="keywords"
+              placeholder="Keywords"
               onChange={this.handleChange}/>
             <button className="submit-event input" type="submit">Add Event</button>
 
