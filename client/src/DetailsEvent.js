@@ -62,6 +62,7 @@ class DetailsEvent extends React.Component {
             <div className="details">
                 <NavBar/>
                 <img className="card-img-top detail-img" src={this.state.thisEvent.picture} alt="place-img" />
+                
                 <div className="card-body-details">
                     <h2 className="card-title"> {this.state.thisEvent.title}</h2>
                     <span className="card-location" > <i className="fa fa-globe" aria-hidden="true"> </i>{this.state.thisEvent.address}</span>
@@ -69,12 +70,12 @@ class DetailsEvent extends React.Component {
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
                     <h4 className="card-time"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} End time : {this.state.eventEndDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventEndTime}</h4>
                     <h4 className="card-attendees">Max number of people: {this.state.thisEvent.attendees} <button className="btn-join">Join the Event</button></h4>
-                
                 </div>
+
                 <div className="map">
                     <MapContainer details = {this.state.thisEvent}/>
                 </div>
-            </div >
+            </div>
         )
     }
 }

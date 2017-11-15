@@ -99,6 +99,12 @@ LOGIN PAGE
     height: 140px;
 }
 
+.card-body-details{
+    position: absolute;
+    top: 0px;
+    right: 195px;
+}
+
 @media (max-width: 750px) {
     .card {
         width: 100%;
@@ -121,6 +127,7 @@ LOGIN PAGE
     margin-top: 70px;
     position: relative;
     /* padding : 10px */
+    
    
 }
 
@@ -132,12 +139,12 @@ LOGIN PAGE
 }
 
 
-.btn-join{
+/* .btn-join{
     margin-left: 100px;
     width: 20%;
     height: 30px;
     line-height: 2;
-}
+} */
 
 #search-filter {
     width: 60%;
@@ -145,8 +152,29 @@ LOGIN PAGE
     padding: 10px;
     border: 3px solid rgb(112, 107, 107);
     text-align: center;
-    margin-left: 233px;
+    margin-left: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
+    /* background-image: url('http://files.softicons.com/download/toolbar-icons/mono-general-icons-2-by-custom-icon-design/png/512x512/search.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: right center; */
 }
 
+.fa-search{
+        color: white;
+        border-top: 3px solid rgb(112, 107, 107);
+        border-bottom: 3px solid rgb(112, 107, 107);
+        border-right: 3px solid rgb(112, 107, 107);
+        background-color: #00A2FF;
+        width: 7%;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+        height: 49px;
+        line-height: 2;
+        
+
+
+}
