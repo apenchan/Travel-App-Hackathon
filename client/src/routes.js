@@ -8,7 +8,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 
 const Routes = () => (
-    <div className="container">
+    <div className="container-test">
         <Switch>
             <Route name="homepage" exact path='/' component={Homepage} />
             <Route path="/moreDetails/:eventId" component={DetailsEvent} />
