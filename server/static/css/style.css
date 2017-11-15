@@ -103,8 +103,12 @@ LOGIN PAGE
     position: absolute;
     top: 0px;
     right: 195px;
+    font-size : 18px;
 }
 
+.card-description{
+    margin-bottom : 10px;
+}
 @media (max-width: 750px) {
     .card {
         width: 100%;
@@ -174,7 +178,10 @@ LOGIN PAGE
         text-align: center;
         height: 49px;
         line-height: 2;
-        
-
-
 }
+
+/* .map{
+    position: absolute;
+    /* top: 0px; */
+    /* right: 300px;
+} */
