@@ -1,8 +1,11 @@
- *{box-sizing: border-box;}
-    /* font-family: 'Pacifico', cursive;
+ * {
+     box-sizing: border-box;
+ }
+ /* font-family: 'Pacifico', cursive;
     font-family: 'Courgette', cursive;
     font-family: 'Lobster Two', cursive;  */
     /* font-family: 'Playfair Display', serif; */
+
 
 .container{
     padding: 0;
@@ -28,7 +31,8 @@ LOGIN PAGE
     -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
     box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-    margin-left: 13px;
+    
+    z-index: 1;
 }
 
 .fa-plane {
@@ -66,16 +70,26 @@ LOGIN PAGE
 .input {
     padding: 5px;
     text-align: center;
-    margin: 5px;
+    margin: 4px;
     height: 30px;
-    width: 188px;
-    border: 3px solid rgba(85, 85, 85, 0.67);
+    width: 175px;
+    font-size: 12px;
+    -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
 }
 
 .input-time {
     margin: 5px;
     height: 30px;
     width: 100px;
+}
+
+.submit-event{
+    color : #00A2FF;
+    font-size: 12px;
+    padding : 5px;
+    font-weight: bold;
 }
 
 .card {
@@ -96,15 +110,9 @@ LOGIN PAGE
 
 .card-img-top {
     width: 100%;
-    height: 140px;
+    height: 208px;
 }
 
-.card-body-details{
-    position: absolute;
-    top: 0px;
-    right: 195px;
-    font-size : 18px;
-}
 
 .card-description{
     margin-bottom : 10px;
@@ -125,30 +133,56 @@ LOGIN PAGE
 
 
 
-.details{
-    width: 100%;
-    height: 100%;
-    margin-top: 70px;
-    position: relative;
-    /* padding : 10px */
-    
-   
+
+/* .card-body-details{
+        height: auto;
+        overflow: visible;
+        width: 45%;
+        margin: 5px;
+        -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+        -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+        box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+        float: left;
+} */
+.detail-wrapper{
+    height: auto;
+    overflow: visible;
+    width: 45%;
+    margin-top: 58px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+
 }
 
 .detail-img{
-    width : 40%;
-    height : auto;
-    border : 3px solid black;
-    margin-left: 6px
+    width: 100%;
+    height: 80%;
 }
 
+.details {
+    position: relative;
+}
 
-/* .btn-join{
-    margin-left: 100px;
-    width: 20%;
-    height: 30px;
-    line-height: 2;
-} */
+.btn-join {
+    background-color: white;
+    color: black;
+    border: 2px solid #00A2FF;
+    padding : 10px;
+    text-align : center;
+    border-radius:10px;
+    cursor: pointer;
+
+}
+
 
 #search-filter {
     width: 60%;
@@ -159,10 +193,6 @@ LOGIN PAGE
     margin-left: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
-    /* background-image: url('http://files.softicons.com/download/toolbar-icons/mono-general-icons-2-by-custom-icon-design/png/512x512/search.png');
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: right center; */
 }
 
 .fa-search{
@@ -180,8 +210,26 @@ LOGIN PAGE
         line-height: 2;
 }
 
-/* .map{
-    position: absolute;
-    /* top: 0px; */
-    /* right: 300px;
-} */
+
+ .inlineDiv {
+     display: inline-flex
+ }
+ 
+ #PlacesAutocomplete__root>input {
+     margin-top: 3%;
+     -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+     -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+     box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
+     height: 30px;
+     margin-top: 2.5%;
+ }
+
+.map{
+    
+    height: 235px;
+}
+
+
+.clear {
+    clear: both;
+}
