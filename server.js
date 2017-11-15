@@ -34,23 +34,30 @@ app.get("/currentUser", ensureAuthenticated, function(req, res){
 })
 
 //EVENT SERVER//
-app.post('/event', function(req, res, next) {
+app.post('/event', ensureAuthenticated, function(req, res, next) {
     console.log(req.user)
     console.log(req.body)
+    var currentUser = req.user.user.username 
     var events = new Events(req.body);
+
     events.save(function(err, savedEvent) {
         if (err) { res.send(err) }
-        res.send(savedEvent);
+        
+        res.send({savedEvent: savedEvent, username: currentUser});
         console.log('the savedEvent was saved')
     })
 })
 
 
-app.get('/event',function(req, res, next) {
+app.get('/event', ensureAuthenticated, function(req, res, next) {
+    console.log('----------------------------------')
+    var currentUser = req.user.user.username  
+    console.log('----------------------------------')
+    
+
     Events.find({}, function(err, allEvents) {
         if (err) { res.send(err) }
-        res.send(allEvents);
-        console.log('get all events')
+        res.send({allEvents: allEvents, username: currentUser, test: 'test'});
     })
 
 })

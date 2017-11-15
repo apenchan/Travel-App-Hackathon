@@ -8,7 +8,10 @@ import Logout from './Logout';
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { events: [] };
+    this.state = { 
+      events: [], 
+      currentUser: ''
+    };
     this.createEvent = this.createEvent.bind(this);
     this.setEvents = this.setEvents.bind(this);
   }
@@ -16,14 +19,32 @@ class Homepage extends React.Component {
 
   componentWillMount() {
     window.scrollTo(0, 0)
+    let jwt = sessionStorage.jwt;
     let currentComponent = this;
-    axios.get("/event")
+    axios.get("/event", 
+    {headers:{
+      "Authorization": "Bearer " + jwt
+    }})
         .then(function (response) {
-            console.log(response.data);
-            currentComponent.setState({ events: response.data })
-            console.log(currentComponent.state)
+          let userFromServer = response.data.username;
+          console.log('hello from the then function --------------')
+          console.log(userFromServer)
+
+          
+          currentComponent.setState({ 
+            events: response.data.allEvents,
+            currentUser: userFromServer
+          });
+          
+          console.log(currentComponent.state)
+          console.log('-------------------------------------------')
+
+  
         }).catch(function (error) {
-            console.log(error);
+          console.log('hello from the catch ----------------------')
+          console.log(`error`)
+          console.log(error);
+          console.log('-------------------------------------------')
         });
 }
 
@@ -43,6 +64,10 @@ class Homepage extends React.Component {
   render() {
     return (
       <div id="homepage" className="main-container">
+        ------------------------------
+        Welcome
+        <h1>{this.state.currentUser}</h1>
+        ------------------------------
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>   

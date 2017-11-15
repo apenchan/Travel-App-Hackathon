@@ -69,9 +69,10 @@ class CreateEventForm extends React.Component {
       .then(function (latLng) {
         let lat = latLng.lat
         let lng = latLng.lng
+        let jwt = sessionStorage.jwt
         that.setState({ lat: latLng.lat, lng: latLng.lng })
   
-        axios.post("/users/event", {
+        axios.post("/event", {
           description: that.state.description,
           // startTime: that.state.startTime,
           endDate: that.state.endDate._d,
@@ -85,9 +86,13 @@ class CreateEventForm extends React.Component {
           lat: that.state.lat,
           lng: that.state.lng,
           isShown : true
+        }, {
+          headers:{
+            "Authorization": "Bearer " + jwt
+          }
         })
           .then((response) => {
-            that.props.createEvent(response.data);
+            that.props.createEvent(response.data.savedEvent);
             that.setState({
               title: "",
               description: "",
