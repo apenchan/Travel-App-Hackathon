@@ -38,7 +38,6 @@ class CreateEventForm extends React.Component {
       .handleSubmit
       .bind(this);
 
-
   }
 
   handleChange(e) {
@@ -56,7 +55,6 @@ class CreateEventForm extends React.Component {
     this.setState({endDate: date})
   }
 
-
   handleSubmit(e) {
     let that = this;
     e.preventDefault();
@@ -69,142 +67,137 @@ class CreateEventForm extends React.Component {
         that.setState({lat: latLng.lat, lng: latLng.lng})
       })
       //API IMAGE
-      .then((response) => {
-        var config = {
-          headers: {
-            'Api-Key': 'dja3ucju77us3f3wb46ucej8'
-          }
-        };
+.then((response) => {
+  var config = {
+    headers: {
+      'Api-Key': 'dja3ucju77us3f3wb46ucej8'
+    }
+  }
 
         axios
-          .get(`https://api.gettyimages.com/v3/search/images/creative?embed_content_only=true&fields=comp%2Curi_oembed&minimum_size=large&phrase=${that.state.PicUrl}&page=1&page_size=6&sort_order=most_popular`, config)
+        .get(`https://api.gettyimages.com/v3/search/images/creative?embed_content_only=true&fields=comp%2Curi_oembed&minimum_size=large&phrase=${that.state.PicUrl}&page=1&page_size=6&sort_order=most_popular`, config)
+        .then((response) => {
 
-          .then((response) => {
-            console.log(response.data)
-            that.setState({PicUrl: ''})
-            console.log(that.state.PicUrl)
-            that.setState({PicUrl: response.data.images[0].display_sizes[0].uri})
-            console.log(that.state.PicUrl)
-            axios
-              .post("/event", {
-              description: that.state.description,
-              endDate: that.state.endDate._d,
-              startDate: that.state.startDate._d,
-              attendees: that.state.attendees,
-              title: that.state.title,
-              address: that.state.address,
-              lat: that.state.lat,
-              lng: that.state.lng,
-              PicUrl: that.state.PicUrl,
-              isShown: true
-            })
-              .then((response) => {
-                console.log(response.data)
-                that
-                  .props
-                  .createEvent(response.data);
-                that.setState({
-                  title: "",
-                  description: "",
-                  endDate: moment(),
-                  attendees: 0,
-                  picture: "",
-                  startDate: moment(),
-                  address: '',
-                  lat: 0,
-                  lng: 0,
-                  PicUrl: "",
-                  isShown: true
-                })
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+          console.log(response.data)
+          var keyword = that.state.PicUrl
+          that.setState({ PicUrl: response.data.images[0].display_sizes[0].uri}, 
+          
+                function(){
+                 console.log( that.state.PicUrl)
 
+                var config2 = {
+                headers: {
+                'Api-Key': 'ff5sasf7gu9xdyscuhr5967s'
+                }}
+           
+                      axios.get(`https://api.gettyimages.com/v3/search/videos?fields=comp&page_size=3&phrase=eiffel picnic`, config2)
+                      .then((response) => {
+                        
+                      console.log(response.data) 
+
+                      })
+                      .catch(function (error) {
+                      console.log(error);
+                      });
+          
+        })
+
+
+
+  //     })
+  //     .catch(error => console.error('Error', error))
+  // }
+
+//this closese the .then of the first get request 
           })
-          .catch(function (error) {
-            console.log(error);
-          })
-      })
-      .catch(error => console.error('Error', error))
-  }
+         
+// this closese the first .then((response) that also changes the header ->
+        })
 
-  render() {
-    const inputProps = {
-      value: this.state.address,
-      onChange: this.onChange
+      //this closese the handleSubmit  ->
+    }
+      render() {
+        const inputProps = {
+          value: this.state.address,
+          onChange: this.onChange
+        }
+
+        return (
+
+          <div className="create-event-form">
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-inputs">
+                <div className="inlineDiv">
+
+                  <DatePicker
+                    className="input"
+                    id="startTime"
+                    placeholderText="Choose a start time"
+                    selected={this.state.startDate}
+                    onChange={this.handleStartDateChange}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                    dateFormat="LLL"
+                    withPortal/>
+
+                  <DatePicker
+                    className="input"
+                    id="endTime"
+                    placeholder="End Time"
+                    selected={this.state.endDate}
+                    onChange={this.handleEndDateChange}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                    dateFormat="LLL"
+                    withPortal/>
+                  <PlacesAutocomplete
+                    className="input"
+                    onChange={this.handleChange}
+                    inputProps={inputProps}/>
+
+                </div>
+                <input
+                  className="input"
+                  type="text"
+                  id="title"
+                  required="true"
+                  value={this.state.title}
+                  placeholder="Event Name"
+                  onChange={this.handleChange}/>
+                <input
+                  className="input"
+                  type="text"
+                  id="description"
+                  required="true"
+                  value={this.state.description}
+                  placeholder="Event Description"
+                  onChange={this.handleChange}/>
+
+                <input
+                  className="input"
+                  type="text"
+                  id="PicUrl"
+                  required="true"
+                  value={this.state.PicUrl}
+                  placeholder="keywords"
+                  onChange={this.handleChange}/>
+                <button className="submit-event input" type="submit">Add Event</button>
+
+              </div>
+            </form>
+          </div>
+        )
+
+      }
+
     }
 
-    return (
+  export default CreateEventForm;
 
-      <div className="create-event-form">
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-inputs">
-            <div className="inlineDiv">
-
-              <DatePicker
-                className="input"
-                id="startTime"
-                placeholderText="Choose a start time"
-                selected={this.state.startDate}
-                onChange={this.handleStartDateChange}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="LLL"
-                withPortal/>
-
-              <DatePicker
-                className="input"
-                id="endTime"
-                placeholder="End Time"
-                selected={this.state.endDate}
-                onChange={this.handleEndDateChange}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="LLL"
-                withPortal/>
-              <PlacesAutocomplete
-                className="input"
-                onChange={this.handleChange}
-                inputProps={inputProps}/>
-
-            </div>
-            <input
-              className="input"
-              type="text"
-              id="title"
-              required="true"
-              value={this.state.title}
-              placeholder="Event Name"
-              onChange={this.handleChange}/>
-            <input
-              className="input"
-              type="text"
-              id="description"
-              required="true"
-              value={this.state.description}
-              placeholder="Event Description"
-              onChange={this.handleChange}/>
-
-            <input
-              className="input"
-              type="text"
-              id="PicUrl"
-              required="true"
-              value={this.state.PicUrl}
-              placeholder="keywords"
-              onChange={this.handleChange}/>
-            <button className="submit-event input" type="submit">Add Event</button>
-
-          </div>
-        </form>
-      </div>
-    )
-
-  }
-
-}
-
-export default CreateEventForm;
+  // .then((response) => {
+  // axios.get(`https://api.gettyimages.com/v3/search/videos?fields=comp&page_size
+  // = 3&phrase=${that.state.PicUrl}`)                 .then((response) => {
+  // console.log(response.data)                 .catch(function (error) {
+  // console.log(error);                 })})
