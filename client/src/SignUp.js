@@ -29,25 +29,26 @@ class Signup extends React.Component{
       password: this.state.password
     }).then(function (response) {
       console.log(response.data);
+      alert('Your account was created, go ahead and login')
     }).catch(function (error) {
       console.log(error);
     });
     console.log(this.state)
     // this.props.createUser(this.state);
     this.setState({
-      // firstName: "",
-      // lastName: "",
-      // username: "",
-      // password: ""
-      firstName: this.props.initialCreate,
-      lastName: this.props.initialCreate,
-      username: this.props.initialCreate,
-      password: this.props.initialCreate
+      firstName: "",
+      lastName: "",
+      username: "",
+      password: "",
+      // firstName: this.props.initialCreate,
+      // lastName: this.props.initialCreate,
+      // username: this.props.initialCreate,
+      // password: this.props.initialCreate
     })
 
   }
 
-  
+
   render() {
     return (
       <div className="signup-form">
