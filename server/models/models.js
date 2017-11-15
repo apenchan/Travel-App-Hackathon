@@ -1,20 +1,20 @@
-var mongoose = require('mongoose')
+// var mongoose = require('mongoose')
 
-var eventsSchema = new mongoose.Schema({
-    description: String,
-    // startTime: String,
-    startDate: Date,
-    endDate: String,
-    // city: String,
-    // country: String,
-    address: String,
-    lat: Number,
-    lng: Number,
-    attendees: Number,
-    picture: String,
-    title: String,
-    isShown: Boolean
-});
+// var eventsSchema = new mongoose.Schema({
+//     description: String,
+//     // startTime: String,
+//     startDate: Date,
+//     endDate: String,
+//     // city: String,
+//     // country: String,
+//     address: String,
+//     lat: Number,
+//     lng: Number,
+//     attendees: Number,
+//     picture: String,
+//     title: String,
+//     isShown: Boolean
+// });
  
 
 
@@ -26,8 +26,8 @@ var eventsSchema = new mongoose.Schema({
 // })
 
 
-var Events = mongoose.model('events', eventsSchema)
-    // var Users = mongoose.model('users', userSchema)
+// var Events = mongoose.model('events', eventsSchema)
+//     // var Users = mongoose.model('users', userSchema)
 
-module.exports.Events = Events;
-// module.exports.Users = Users;
+// module.exports.Events = Events;
+// // module.exports.Users = Users;

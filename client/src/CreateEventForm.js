@@ -71,7 +71,7 @@ class CreateEventForm extends React.Component {
         let lng = latLng.lng
         that.setState({ lat: latLng.lat, lng: latLng.lng })
   
-        axios.post("/event", {
+        axios.post("/users/event", {
           description: that.state.description,
           // startTime: that.state.startTime,
           endDate: that.state.endDate._d,

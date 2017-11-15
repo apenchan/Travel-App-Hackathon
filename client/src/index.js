@@ -25,10 +25,10 @@ class App extends React.Component {
         "Authorization": "Bearer " + jwt
       }}
     ).then(function(response){
-      console.log(response);
-      console.log(response.username)
-      this.setState({username: data.username})
-      console.log(this.state.username)
+      // console.log(response);
+      // console.log(response.username)
+      // this.setState({username: data.username})
+      // console.log(this.state.username)
     })
 
   }

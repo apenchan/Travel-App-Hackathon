@@ -1,6 +1,6 @@
 const express = require('express');
 var path = require('path');
-// var Events = require('./server/models/models.js').Events
+var User = require('./models/userModel.js').User
 var Events = require('./models/models.js').Events
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 // var FontAwesome = require('react-fontawesome');
 const app = express();
 var expressJWT = require('express-jwt');
-var ensureAuthenticated = expressJWT({ secret: process.env.JWT_SECRET });
+var ensureAuthenticated = expressJWT({ secret: process.env.JWT_SECRET});
 var db = mongoose.connect('mongodb://localhost/travelDB', function() {
     console.log('Travel App connection established!!!');
 })
@@ -22,80 +22,20 @@ app.use(cookieParser());
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-//USER SERVER//
-
-// app.use(expressSession({
-//   secret: 'yourSecretHere',
-//   resave: false,
-//   saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// Add the auth routing
-// app.use("/auth", authRouting);
-
-
 var authController = require('./controllers/auth.js');
 app.use('/auth', authController);
 
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
-// Create authentication middleware
-// var ensureAuthenticated = function(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next();
-//   } else {
-//     return res.status('401').send({message: "Unauthorized" });
-//   }
-// };
-
 app.get("/currentUser", ensureAuthenticated, function(req, res){
   console.log(req)
   res.send("yoo")
 })
 
-// app.get('/currentuser', ensureAuthenticated, function(req, res) {
-//   if (req.user) {
-//     res.send(req.user.username)
-//   } else {
-//     res.send(null)  
-//   }
-// });
-
-//USER SERVER//
-
-
-// app.post('/user', function (req, res, next) {
-//   Users.create(req.body,function (err, savedUser) {
-//     if (err) { res.send(err) }
-//     res.send(savedUser);
-//     console.log('the user was saved')
-//   })
-// })
-
-// app.get('/user/:userId', function (req, res, next) {
-//   Users.findById(req.params.userId,function (err, thisUser) {
-//     if (err) { res.send(err) }
-//     res.send(thisUser);
-//     console.log('get this specific user')
-//   })
-// })
-
-
-//USER SERVER//
-
-// app.use(expressSession({
-//   secret: 'yourSecretHere',
-//   resave: false,
-//   saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 //EVENT SERVER//
 app.post('/event', function(req, res, next) {
+    console.log(req.user)
     console.log(req.body)
     var events = new Events(req.body);
     events.save(function(err, savedEvent) {
@@ -106,7 +46,7 @@ app.post('/event', function(req, res, next) {
 })
 
 
-app.get('/event', function(req, res, next) {
+app.get('/event',function(req, res, next) {
     Events.find({}, function(err, allEvents) {
         if (err) { res.send(err) }
         res.send(allEvents);
@@ -116,7 +56,7 @@ app.get('/event', function(req, res, next) {
 })
 
 app.get('/event/:id', ensureAuthenticated, function(req, res, next) {
-  console.log|('did we get ensured')
+  console.log('did we get ensured')
   console.log('____________________________________________________________________')
     console.log(req.params.id)
     Events.findById(req.params.id, function(err, thisEvent) {

@@ -2,8 +2,6 @@ import React from 'react';
 import CreateEventForm from './CreateEventForm'
 import EventsListBox from './EventsListBox'
 import axios from 'axios'
-import FilterForm from './FilterForm.js'
-import ShowUsername from './ShowUsername'
 import Logout from './Logout';
 
 
@@ -45,12 +43,9 @@ class Homepage extends React.Component {
   render() {
     return (
       <div id="homepage" className="main-container">
-        <ShowUsername/>
-        <Logout/>
         <div className="create-event-form">
           <CreateEventForm createEvent={this.createEvent}/>
         </div>   
-        <FilterForm setEvents={this.setEvents} events={this.state.events} />
         <EventsListBox events={this.state.events}/>
       </div>
     );

@@ -1,12 +1,14 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
+var userEventSchema = require('./userEvents.js').schema
 
 var UserSchema = new mongoose.Schema({
 	firstName: {type: String, require: true},
 	lastName: {type: String, require: true},
 	username: {type: String, unique: true, require: true},
-	password: {type: String, require: true}
+	password: {type: String, require: true},
+	savedEvents: [userEventSchema]
 });
 
 //validation hook for the middleware. What this will do is not execute the "save" until the "done" has been fully executed until the authentication has been fully executed. 

@@ -28,8 +28,8 @@ class Login extends React.Component{
       this.setState({
         // username: "",
         // password: ""
-        username: this.props.initialLoginCheck,
-        password: this.props.initialLoginCheck,
+        username: this.state.username,
+        password: this.state.username,
         loggedIn: true
       })
       console.log("work baby work");
@@ -37,6 +37,8 @@ class Login extends React.Component{
       // this.props.changeLog('jwt', response.data.token)
       console.log('yooooo')
       console.log(sessionStorage.jwt);
+      this.props.getUsername(response.data);
+      this.setState({username: ""});
       //later on pass the current user up to the app component
       // console.log("cookie is set");
       // this.saveItem('id_token', responseData.id_token),
