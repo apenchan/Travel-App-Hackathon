@@ -7,10 +7,10 @@ import { Switch, Route, Router, Redirect, browserHistory, history } from 'react-
 class App extends React.Component {
   componentWillMount() {
     let jwt = sessionStorage.jwt;
-    const { auth, history, setNextRoute } = this.props
-    if (!jwt) {
-      history.push('/login')
-    }
+    // const { auth, history, setNextRoute } = this.props
+    // if (!jwt) {
+    //   history.push('/login')
+    // }
     axios.get("http://localhost:3000/currentuser", {
       headers: {
         "Authorization": "Bearer " + jwt

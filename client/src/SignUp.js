@@ -53,14 +53,14 @@ class Signup extends React.Component{
     return (
       <div className="signup-form">
         <div className="create-account">
-          <div className="create-title"> Create Acount </div>
+          <div className="create-title"> Create Account </div>
           <form onSubmit={this.handleSubmit}>
           <ul className="sign-up-vertical">
             <li><input type="text" className="form-control signup-control" id="firstName" required="true" value={this.state.firstName} placeholder="First Name" onChange={this.handleSignUpForm} /></li>
             <li><input type="text" className="form-control signup-control" id="lastName" required="true" value={this.state.lastName} placeholder="Last Name" onChange={this.handleSignUpForm} /></li>
             <li><input type="text" className="form-control signup-control" id="username" required="true" value={this.state.username} placeholder="Create Username" onChange={this.handleSignUpForm} /></li>
             <li><input type="password" className="form-control signup-control" id="password" required="true" value={this.state.password} placeholder="Create Password" onChange={this.handleSignUpForm} /></li>
-            <li><button className="submit-event" type="submit">Create Acount</button></li>
+            <li><button className="submit-event" type="submit">Create Account</button></li>
             </ul>
           </form>
         </div>
