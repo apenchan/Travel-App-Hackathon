@@ -100,7 +100,10 @@ class CreateEventForm extends React.Component {
                 lng: that.state.lng,
                 PicUrl: that.state.PicUrl,
                 isShown: true
-              })
+              }, {headers:{
+                "Authorization": "Bearer " + jwt
+              }
+            })
           .then((response) => {
             console.log(response.data)
             that
