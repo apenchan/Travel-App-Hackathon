@@ -1,4 +1,5 @@
-* {box-sizing: border-box;}
+* {box-sizing: border-box;
+  }
 /* font-family: 'Pacifico', cursive;
    font-family: 'Courgette', cursive;
    font-family: 'Lobster Two', cursive;  */
@@ -33,6 +34,11 @@
     font-family: "TravelGoals.ttf";
     font-size: 70px;
     text-align: center;
+    color : #00A2FF;
+}
+
+.fa-plane-title{
+margin : 50px;
 }
 .login-title{
     font-family: "GeosansLight.ttf";
@@ -147,6 +153,7 @@
 
 .logo-homepage {
    font-size: 22px;
+   font-family: "TravelGoals.ttf";
 }
 
 .fa-user {
