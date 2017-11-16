@@ -34,6 +34,39 @@ class Homepage extends React.Component {
   }
   
 
+  createEvent(event) {
+    this.setState({ events: this.state.events.concat(event) })
+  }
+
+
+
+  setEvents(events) {
+    this.setState({ events: events });
+  }
+
+
+
+  render() {
+    return (
+      <div id="homepage" className="main-container">
+        <NavBar />
+        {/* <h1>==================</h1>
+        <h1>{this.state.currentUser}</h1>
+        <h1>==================</h1> */}
+        {/* username={this.state.currentUser} */}
+
+        <div className="create-event-form">
+          <CreateEventForm createEvent={this.createEvent} />
+        </div>
+        <FilterForm setEvents={this.setEvents} events={this.state.events} />
+        <EventsListBox events={this.state.events} />
+      </div>
+    );
+  }
+}
+
+
+export default Homepage;
 
 
 
@@ -90,37 +123,3 @@ class Homepage extends React.Component {
 
 
 
-
-  createEvent(event) {
-    this.setState({ events: this.state.events.concat(event) })
-  }
-
-
-
-  setEvents(events) {
-    this.setState({ events: events });
-  }
-
-
-
-  render() {
-    return (
-      <div id="homepage" className="main-container">
-        <NavBar />
-        {/* <h1>==================</h1>
-        <h1>{this.state.currentUser}</h1>
-        <h1>==================</h1> */}
-        {/* username={this.state.currentUser} */}
-
-        <div className="create-event-form">
-          <CreateEventForm createEvent={this.createEvent} />
-        </div>
-        <FilterForm setEvents={this.setEvents} events={this.state.events} />
-        <EventsListBox events={this.state.events} />
-      </div>
-    );
-  }
-}
-
-
-export default Homepage;

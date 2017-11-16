@@ -16,6 +16,8 @@ class DetailsEvent extends React.Component {
             eventEndTime: null,
         }
     }
+
+//AUTH + RENDERING OF THE DATE AND TIME 
     componentWillMount() {
         let jwt = sessionStorage.jwt;
         window.scrollTo(0, 0)
@@ -26,6 +28,7 @@ class DetailsEvent extends React.Component {
                 "Authorization": "Bearer " + jwt,
             }
         })
+    
             .then((response) => {
                 var startYear = moment(response.data.startDate)._pf.parsedDateParts[0]
                 var startMonth = moment(response.data.startDate)._pf.parsedDateParts[2]
@@ -72,15 +75,14 @@ class DetailsEvent extends React.Component {
                             <span className="card-description content"> <i className="fa fa-plus" aria-hidden="true"> </i>{this.state.thisEvent.description} </span>
                             <br /><h4 className="card-time content"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} Start time :{this.state.eventStartDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventStartTime}</h4>
                             <h4 className="card-time content"><i className="fa fa-calendar" aria-hidden="true"></i>{this.state.thisEvent.eventDate} End time : {this.state.eventEndDate} <i className="fa fa-clock-o" aria-hidden="true"></i> {this.state.eventEndTime}</h4>
-                            {/* <h4 className="card-attendees content">Max number of people: {this.state.thisEvent.attendees}</h4>  */}<br />
                             <button className="btn-join">Join the Event</button>
                         </div>
 
-                        {/* <div className="map-details"> */}
-                            <div className="map">
-                                <MapContainer details={this.state.thisEvent} />
-                            </div>
-                        {/* </div> */}
+
+                        <div className="map">
+                            <MapContainer details={this.state.thisEvent} />
+                        </div>
+
 
                     </div>
                 </div>
