@@ -25,6 +25,8 @@ class MapContainer extends React.Component {
             })
         }
     }
+
+// RENDERING OF THE MAP IN THE LOCATION CHOSEN,AND THE MARKER IN THE GOOD POSITION
     render() {
         return (
          

@@ -14,7 +14,7 @@ const Routes = () => (
             <Route path="/moreDetails/:eventId" component={DetailsEvent} />
             <Route name="logout" path='/logout' component={Logout} />
             <Route name="login" component={LoginSignUp} />
-            {/* <Route component={Page404} /> */}
+            <Route component={Page404} />
 
 
         </Switch>
