@@ -7,7 +7,7 @@ class LoginSignUp extends React.Component {
   render() {
     return (
       <div className="main-login-container">
-      <TravelerLogo/>
+      <TravelerLogo />
       <div className="signup-login-wrapper">
         <div className="login">
           <Login />
