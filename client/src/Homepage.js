@@ -22,35 +22,16 @@ class Homepage extends React.Component {
   componentWillMount() {
 
       window.scrollTo(0, 0)
-      let jwt = sessionStorage.jwt;
       let currentComponent = this;
-      axios.get("/event", 
-      {headers:{
-        "Authorization": "Bearer " + jwt
-      }})
-      .then(function (response) {
-        let userFromServer = response.data.username;
-        console.log('hello from the then function --------------')
-        console.log(userFromServer)
-
-        
-        currentComponent.setState({ 
-          events: response.data.allEvents,
-          currentUser: userFromServer
-        });
-        
-        console.log(currentComponent.state)
-        console.log('-------------------------------------------')
-
-
-      }).catch(function (error) {
-        console.log('hello from the catch ----------------------')
-        console.log(`error`)
-        console.log(error);
-        console.log('-------------------------------------------')
-      });
-}
-
+      axios.get("/event")
+          .then(function (response) {
+              console.log(response.data);
+              currentComponent.setState({ events: response.data })
+              console.log(currentComponent.state)
+          }).catch(function (error) {
+              console.log(error);
+          });
+  }
   
 
   createEvent(event) {
@@ -69,9 +50,9 @@ class Homepage extends React.Component {
     return (
       <div id="homepage" className="main-container">
         <NavBar />
-        <h1>==================</h1>
+        {/* <h1>==================</h1>
         <h1>{this.state.currentUser}</h1>
-        <h1>==================</h1>
+        <h1>==================</h1> */}
         {/* username={this.state.currentUser} */}
 
         <div className="create-event-form">

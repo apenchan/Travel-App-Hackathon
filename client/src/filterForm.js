@@ -29,7 +29,7 @@ import React from 'react';
      render(){
          return(
             <div className="search-form">
-            <input id="search-filter" placeholder="Search by city" onChange={this.filterEvents}/>
+            <input id="search-filter" placeholder="Search by Location" onChange={this.filterEvents}/>
             <i className="fa fa-search" aria-hidden="true"></i> 
             </div>
          )

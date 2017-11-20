@@ -34,38 +34,10 @@ app.get("/currentUser", ensureAuthenticated, function(req, res){
 
 //EVENT SERVER//
 
-app.post('/event', ensureAuthenticated, function(req, res, next) {
-    console.log(req.user)
-    console.log(req.body)
-    var currentUser = req.user.user
-    var events = new Events(req.body);
-
-    events.save(function(err, savedEvent) {
-        if (err) { res.send(err) }
-        
-        res.send({savedEvent: savedEvent, username: currentUser});
-        console.log('the savedEvent was saved')
-    })
-})
-
-
-app.get('/event', ensureAuthenticated, function(req, res, next) {
-    console.log('----------------------------------')
-    var currentUser = req.user.user
-    console.log('----------------------------------')
-    
-
-    Events.find({}, function(err, allEvents) {
-        if (err) { res.send(err) }
-        res.send({allEvents: allEvents, username: currentUser, test: 'test'});
-    })
-
-})
-
 // app.post('/event', ensureAuthenticated, function(req, res, next) {
 //     console.log(req.user)
 //     console.log(req.body)
-//     var currentUser = req.user.user.username 
+//     var currentUser = req.user.user
 //     var events = new Events(req.body);
 
 //     events.save(function(err, savedEvent) {
@@ -78,10 +50,8 @@ app.get('/event', ensureAuthenticated, function(req, res, next) {
 
 
 // app.get('/event', ensureAuthenticated, function(req, res, next) {
-//     console.log('getting here ?--------------------')
 //     console.log('----------------------------------')
-//     var currentUser = req.user.user;
-//     console.log(currentUser)
+//     var currentUser = req.user.user
 //     console.log('----------------------------------')
     
 
@@ -94,26 +64,27 @@ app.get('/event', ensureAuthenticated, function(req, res, next) {
 
 
 
-// app.post('/event', function(req, res, next) {
-//     console.log(req.user)
-//     console.log(req.body)
-//     var events = new Events(req.body);
-//     events.save(function(err, savedEvent) {
-//         if (err) { res.send(err) }
-//         res.send(savedEvent);
-//         console.log('the savedEvent was saved')
-//     })
-// })
+
+app.post('/event', function(req, res, next) {
+    console.log(req.user)
+    console.log(req.body)
+    var events = new Events(req.body);
+    events.save(function(err, savedEvent) {
+        if (err) { res.send(err) }
+        res.send(savedEvent);
+        console.log('the savedEvent was saved')
+    })
+})
 
 
-// app.get('/event',function(req, res, next) {
-//     Events.find({}, function(err, allEvents) {
-//         if (err) { res.send(err) }
-//         res.send(allEvents);
-//         console.log('get all events')
-//     })
+app.get('/event',function(req, res, next) {
+    Events.find({}, function(err, allEvents) {
+        if (err) { res.send(err) }
+        res.send(allEvents);
+        console.log('get all events')
+    })
 
-// })
+})
 
 
 app.get('/event/:id', ensureAuthenticated, function(req, res, next) {
