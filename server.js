@@ -5,13 +5,16 @@ var Events = require('./models/models.js').Events
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var port = process.env.PORT || 3000;
 
 const app = express();
 var expressJWT = require('express-jwt');
 var ensureAuthenticated = expressJWT({ secret: process.env.JWT_SECRET || "1234" });
-var db = mongoose.connect('mongodb://localhost/travelDB', function() {
-    console.log('Travel App connection established!!!');
-})
+var db = process.env.MONGODB_URI || "mongodb://localhost/travelDB";
+mongoose.connect(db);
+// var db = mongoose.connect('mongodb://localhost/travelDB', function() {
+//     console.log('Travel App connection established!!!');
+// })
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -110,6 +113,6 @@ app.get('/*', (req, res) => {
 })
 
 // start the server
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000');
-});
+
+app.listen(port);
+console.log('Server is running on http://localhost:3000 or http://127.0.0.1:3000')
