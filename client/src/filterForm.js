@@ -30,6 +30,7 @@ import React from 'react';
          return(
             <div className="search-form">
             <input id="search-filter" placeholder="Search by Location" onChange={this.filterEvents}/>
+
             <i className="fa fa-search" aria-hidden="true"></i> 
             </div>
          )

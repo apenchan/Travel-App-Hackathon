@@ -28,12 +28,11 @@ class Signup extends React.Component{
       username: this.state.username,
       password: this.state.password
     }).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       alert('Your account was created, go ahead and login')
     }).catch(function (error) {
       console.log(error);
     });
-    console.log(this.state)
     // this.props.createUser(this.state);
     this.setState({
       firstName: "",

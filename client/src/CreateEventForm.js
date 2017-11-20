@@ -182,6 +182,7 @@ render() {
               timeIntervals={15}
               dateFormat="LLL"
               withPortal />
+              
             <PlacesAutocomplete
               className="input"
               onChange={this.handleChange}

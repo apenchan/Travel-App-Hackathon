@@ -1,11 +1,6 @@
-* {box-sizing: border-box;
-  }
-/* font-family: 'Pacifico', cursive;
-   font-family: 'Courgette', cursive;
-   font-family: 'Lobster Two', cursive;  */
-   /* font-family: 'Playfair Display', serif; */
+* {box-sizing: border-box;}
 
-/* //LOGIN PAGE */
+/* LOGIN PAGE */
 @font-face{
     font-family: "GeosansLight.ttf";
     src: url(../fonts/GeosansLight.ttf);
@@ -37,9 +32,6 @@
     color : #00A2FF;
 }
 
-.fa-plane-title{
-margin : 50px;
-}
 .login-title{
     font-family: "GeosansLight.ttf";
     font-size: 40px;
@@ -59,8 +51,6 @@ margin : 50px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .login-control[type=password], select {
@@ -143,30 +133,24 @@ margin : 50px;
    -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
    -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
    box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-   
    z-index: 1;
 }
 
-.fa-plane  {
-   margin: 3px;
-}
+.nav a {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    color: #00A2FF;
+    font-weight: bold;
+ }
 
 .logo-homepage {
-   font-size: 22px;
-   font-family: "TravelGoals.ttf";
+    font-size: 22px;
+    font-family: "TravelGoals.ttf";
 }
 
-.fa-user {
-    margin: 10px;
-}
-
-
-.nav a {
-   position: relative;
-   cursor: pointer;
-   text-decoration: none;
-   color: #00A2FF;
-   font-weight: bold;
+.fa  {
+   margin: 3px;
 }
 
 .username {
@@ -182,6 +166,7 @@ margin : 50px;
    left: 505px;
 }
 
+/* CREATE EVENT FORM */
 .create-event-form {
    margin-top: 70px;
 }
@@ -193,13 +178,24 @@ margin : 50px;
    height: 30px;
    width: 175px;
    font-size: 12px;
- 
 }
 
 .input-time {
    margin: 5px;
    height: 30px;
    width: 100px;
+}
+
+.inlineDiv {
+    display: inline-flex
+}
+
+#PlacesAutocomplete__root>input {
+   padding: 5px;
+    margin-top: 3%;
+    height: 30px;
+    margin-top: 2.5%;
+    text-align: center;
 }
 
 .submit-event{
@@ -209,6 +205,7 @@ margin : 50px;
    font-weight: bold;
 }
 
+/* EVENT BOX */
 .card-wrapper {
    padding: 5px;
    width: 25%;
@@ -219,55 +216,53 @@ margin : 50px;
    height: auto;
    overflow: visible;
    width: 100%;
-   /* margin: 5px; */
    -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
    -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
    box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
    font-size: 13px;
 }
 
+.card-img-top {
+    width: 100%;
+}
+
 .card-body {
    padding: 10px;
 }
 
-.card-img-top {
-   width: 100%;
-}
-
-
 .card-description{
    margin-bottom : 10px;
 }
-@media (max-width: 750px) {
-   .card {
-       width: 100%;
-       height: 100%;
-   }
-   .input {
-       width: 100%;
-   }
-   body {
-       margin-right: 5vw;
-       margin-left: 2vw;
-   }
-} 
 
+#search-filter {
+    width: 60%;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid rgb(112, 107, 107);
+    text-align: center;
+    margin-left: 200px;
+    margin-top: 10px;
+    margin-bottom: 16px;
+ }
+ 
+ .fa-search{
+    color: white;
+    border-top: 1px solid rgb(112, 107, 107);
+    border-bottom: 1px solid rgb(112, 107, 107);
+    border-right: 1px solid rgb(112, 107, 107);
+    background-color: #00A2FF;
+    width: 7%;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px;
+    padding-top: 12px;
+    text-align: center;
+    height: 50px;
+    line-height: 2;
+    margin: 0px;
+ }
 
-
-
-/* .card-body-details{
-       height: auto;
-       overflow: visible;
-       width: 45%;
-       margin: 5px;
-       -webkit-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-       -moz-box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-       box-shadow: 4px 4px 22px -3px rgba(0, 0, 0, 0.6);
-       font-size: 20px;
-       padding: 10px;
-       text-align: center;
-       float: left;
-} */
+/* DETAILS EVENTS */
 .detail-wrapper{
    height: auto;
    overflow: visible;
@@ -281,7 +276,6 @@ margin : 50px;
    font-size: 20px;
    padding: 10px;
    text-align: center;
-
 }
 
 .detail-img{
@@ -305,51 +299,43 @@ margin : 50px;
 }
 
 
-#search-filter {
-   width: 60%;
-   height: 50px;
-   padding: 10px;
-   border: 1px solid rgb(112, 107, 107);
-   text-align: center;
-   margin-left: 200px;
-   margin-top: 10px;
-   margin-bottom: 16px;
-}
-
-.fa-search{
-       color: white;
-       border-top: 3px solid rgb(112, 107, 107);
-       border-bottom: 3px solid rgb(112, 107, 107);
-       border-right: 3px solid rgb(112, 107, 107);
-       background-color: #00A2FF;
-       width: 7%;
-       font-size: 12px;
-       font-weight: bold;
-       padding: 10px;
-       text-align: center;
-       height: 49px;
-       line-height: 2;
-}
-
-
-.inlineDiv {
-    display: inline-flex
-}
-
-#PlacesAutocomplete__root>input {
-   padding: 5px;
-    margin-top: 3%;
-    height: 30px;
-    margin-top: 2.5%;
-    text-align: center;
-}
+/* MAP */
 
 .map{
-   
    height: 235px;
 }
 
 
-.clear {
-   clear: both;
-}
+
+/* RESPONSIVE */
+@media (max-width: 750px) {
+    .input {
+        width: 100%;
+    }
+    body {
+        margin-right: 5vw;
+        margin-left: 2vw;
+    }
+    #search-filter {
+        width: 90%;
+        margin-left: 4px;
+        height : 0%
+    }
+    .fa-search{
+        margin: auto;
+        width: 9%;
+        height: 38px;
+        padding-top: 6px;    
+    }
+    .card-wrapper{
+        width: 100%;
+        height: 100%;
+    }
+    .homepage {
+        left : 30px;
+    }
+    .logout {
+        left : 35px;
+    }
+ } 
+ 

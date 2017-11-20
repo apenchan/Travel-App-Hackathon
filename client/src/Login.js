@@ -34,7 +34,7 @@ class Login extends React.Component {
     }).catch(function (error) {
       console.log(error);
     });
-    console.log(this.state)
+    // console.log(this.state)
   }
   render() {
     if (this.state.loggedIn) {
