@@ -107,10 +107,10 @@ app.get('/event/:id', ensureAuthenticated, function(req, res, next) {
 
 
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './server/static/index.html'))
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, './server/static/index.html'))
 
-})
+// })
 
 // start the server
 
