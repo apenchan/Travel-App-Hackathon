@@ -19,8 +19,8 @@ mongoose.connect(db);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('node_modules'));
-app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
+app.use(express.static('./server/static/'));
 app.use(cookieParser());
 
 
@@ -107,10 +107,10 @@ app.get('/event/:id', ensureAuthenticated, function(req, res, next) {
 
 
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, './server/static/index.html'))
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './server/static/index.html'))
 
-// })
+})
 
 // start the server
 
