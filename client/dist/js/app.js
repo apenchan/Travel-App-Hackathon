@@ -50866,10 +50866,14 @@ var App = function (_React$Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       var jwt = sessionStorage.jwt;
-      // const { auth, history, setNextRoute } = this.props
-      // if (!jwt) {
-      //   history.push('/login')
-      // }
+      var _props = this.props,
+          auth = _props.auth,
+          history = _props.history,
+          setNextRoute = _props.setNextRoute;
+
+      if (!jwt) {
+        history.push('/login');
+      }
       _axios2.default.get("http://localhost:3000/currentuser", {
         headers: {
           "Authorization": "Bearer " + jwt
